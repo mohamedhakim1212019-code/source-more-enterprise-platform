@@ -1,0 +1,10 @@
+<?php
+if (!defined('ABSPATH')) { exit; }
+class SMTP_Diagnostics {
+ public static function init(): void { add_action('admin_menu',[__CLASS__,'menu']); add_action('admin_post_smtp_clear_logs',[__CLASS__,'clear']); }
+ public static function menu(): void { add_submenu_page('smtp-platform','Diagnostics','Diagnostics','manage_options','smtp-diagnostics',[__CLASS__,'page']); }
+ public static function clear(): void { if(!current_user_can('manage_options')||!check_admin_referer('smtp_clear_logs'))wp_die('Not allowed'); SMTP_Logger::clear(); wp_safe_redirect(admin_url('edit.php?post_type='.SMTP_Leads::POST_TYPE.'&page=smtp-diagnostics')); exit; }
+ public static function page(): void { if(!current_user_can('manage_options'))return; $checks=[['WordPress',get_bloginfo('version'),version_compare(get_bloginfo('version'),'6.4','>=')],['PHP',PHP_VERSION,version_compare(PHP_VERSION,'8.0','>=')],['REST API',rest_url(),true],['Permalinks',get_option('permalink_structure')?:'Plain',!empty(get_option('permalink_structure'))],['WP Mail','Configured by host/SMTP plugin','unknown']]; ?>
+ <div class="wrap"><h1>Source More Platform Diagnostics</h1><table class="widefat striped"><thead><tr><th>Check</th><th>Value</th><th>Status</th></tr></thead><tbody><?php foreach($checks as $c):?><tr><td><?php echo esc_html($c[0]);?></td><td><?php echo esc_html($c[1]);?></td><td><?php echo $c[2]===true?'Ready':($c[2]==='unknown'?'Test required':'Action required');?></td></tr><?php endforeach;?></tbody></table>
+ <h2>Operational Log</h2><p><a class="button" href="<?php echo esc_url(wp_nonce_url(admin_url('admin-post.php?action=smtp_clear_logs'),'smtp_clear_logs'));?>">Clear logs</a></p><table class="widefat striped"><thead><tr><th>Time</th><th>Level</th><th>Event</th></tr></thead><tbody><?php foreach(SMTP_Logger::get() as $log):?><tr><td><?php echo esc_html($log['time']);?></td><td><?php echo esc_html(strtoupper($log['level']));?></td><td><?php echo esc_html($log['message']);?></td></tr><?php endforeach;?></tbody></table></div><?php }
+}

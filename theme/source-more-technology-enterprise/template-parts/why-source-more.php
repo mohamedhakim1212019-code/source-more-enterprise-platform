@@ -1,0 +1,10 @@
+<section class="section why-home"><div class="container why-home-grid">
+<div class="why-home-copy reveal"><span class="section-kicker light"><?php echo esc_html(smt_t('Why Source More Technology','لماذا Source More Technology')); ?></span><h2><?php echo esc_html(smt_t('One accountable partner from assessment to ongoing support.','شريك واحد مسؤول من التقييم وحتى الدعم المستمر.')); ?></h2><p><?php echo esc_html(smt_t('We focus on practical outcomes: lower operating cost, stronger control, better user experience, reduced risk, and a technology environment that can scale with your organization.','نركز على نتائج عملية: تكلفة تشغيل أقل، تحكم أقوى، تجربة مستخدم أفضل، مخاطر أقل، وبيئة تكنولوجية قابلة للتوسع مع مؤسستك.')); ?></p><a class="btn btn-gold" href="<?php echo esc_url(smt_page_url('contact')); ?>"><?php echo esc_html(smt_t('Speak With a Consultant','تحدث مع مستشار')); ?></a></div>
+<div class="why-home-cards">
+<?php foreach([
+['fa-compass-drafting',smt_t('Assessment-led','نبدأ بالتقييم'),smt_t('Recommendations begin with your fleet, workflows, infrastructure, and business priorities.','تبدأ توصياتنا من أسطولك وسير العمل والبنية التحتية وأولويات الأعمال.')],
+['fa-puzzle-piece',smt_t('Integrated delivery','تنفيذ متكامل'),smt_t('Print, IT, cloud, security, and automation can work as one coordinated environment.','يمكن للطباعة وتكنولوجيا المعلومات والسحابة والأمان والأتمتة العمل كبيئة واحدة متناسقة.')],
+['fa-chart-pie',smt_t('Business-value focused','تركيز على قيمة الأعمال'),smt_t('We connect technical decisions to cost, productivity, continuity, and measurable performance.','نربط القرارات التقنية بالتكلفة والإنتاجية والاستمرارية والأداء القابل للقياس.')],
+['fa-headset',smt_t('Responsive local support','دعم محلي سريع'),smt_t('Clear ownership, practical communication, and support designed around service continuity.','مسؤولية واضحة وتواصل عملي ودعم مصمم لاستمرارية الخدمة.')]
+] as $x): ?><article class="why-home-card reveal"><i class="fa-solid <?php echo esc_attr($x[0]); ?>"></i><div><h3><?php echo esc_html($x[1]); ?></h3><p><?php echo esc_html($x[2]); ?></p></div></article><?php endforeach; ?>
+</div></div></section>

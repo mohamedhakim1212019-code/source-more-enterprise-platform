@@ -1,0 +1,9 @@
+<section class="section home-about"><div class="container split-grid">
+<div class="image-frame reveal"><img src="<?php echo esc_url(get_template_directory_uri().'/assets/images/about-enterprise.svg'); ?>" alt="<?php echo esc_attr(smt_t('Source More Technology business approach','منهج عمل Source More Technology')); ?>">
+<div class="experience-badge"><strong>20+</strong><span><?php echo esc_html(smt_t('Years of combined market experience','عامًا من الخبرة السوقية المجمعة')); ?></span></div></div>
+<div class="section-copy reveal"><span class="section-kicker"><?php echo esc_html(smt_t('About Source More','عن Source More')); ?></span>
+<h2><?php echo esc_html(smt_t('A practical technology partner focused on measurable outcomes.','شريك تكنولوجي عملي يركز على نتائج قابلة للقياس.')); ?></h2>
+<p><?php echo esc_html(smt_t('We combine managed print, office technology, IT infrastructure, cloud, cybersecurity, and workflow expertise to help enterprises operate more efficiently and plan confidently for growth.','نجمع بين خبرات الطباعة المُدارة وتقنيات المكاتب والبنية التحتية والسحابة والأمن السيبراني وسير العمل لمساعدة المؤسسات على العمل بكفاءة أكبر والتخطيط للنمو بثقة.')); ?></p>
+<div class="mini-points"><span><i class="fa-solid fa-check"></i><?php echo esc_html(smt_t('Solutions aligned with operational needs','حلول مرتبطة بالاحتياجات التشغيلية')); ?></span><span><i class="fa-solid fa-check"></i><?php echo esc_html(smt_t('Consulting, implementation and support','استشارات وتنفيذ ودعم')); ?></span><span><i class="fa-solid fa-check"></i><?php echo esc_html(smt_t('Long-term focus on continuity and value','تركيز طويل الأجل على الاستمرارية والقيمة')); ?></span></div>
+<a class="text-link" href="<?php echo esc_url(smt_page_url('about-us')); ?>"><?php echo esc_html(smt_t('Discover our approach','تعرف على منهجنا')); ?> <i class="fa-solid fa-arrow-right"></i></a></div>
+</div></section>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="160" viewBox="0 0 640 160">
+<rect width="640" height="160" rx="22" fill="#fff"/>
+<rect x="10" y="10" width="140" height="140" rx="24" fill="#0B4F9C"/>
+<text x="80" y="104" text-anchor="middle" font-family="Arial" font-size="52" font-weight="700" fill="#D4AF37">SM</text>
+<text x="175" y="70" font-family="Arial" font-size="42" font-weight="700" fill="#0B4F9C">Source More</text>
+<text x="177" y="108" font-family="Arial" font-size="25" font-weight="600" fill="#334155">TECHNOLOGY</text>
+<text x="177" y="138" font-family="Arial" font-size="18" font-weight="600" fill="#D4AF37">One Source. More Value.</text>
+</svg>

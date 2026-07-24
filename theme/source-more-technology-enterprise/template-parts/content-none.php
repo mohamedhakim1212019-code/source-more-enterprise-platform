@@ -1,0 +1,1 @@
+<div class="empty-state"><h2><?php echo esc_html(smt_t('Nothing published yet','لا يوجد محتوى منشور بعد')); ?></h2><p><?php echo esc_html(smt_t('New insights and resources will appear here.','ستظهر هنا قريبًا المقالات والموارد الجديدة.')); ?></p></div>
