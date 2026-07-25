@@ -68,7 +68,10 @@ final class SMTP_Analytics_Admin {
 					<p>Commercial performance across CRM leads, quote requests, fleet assessments, products, and the AI Assistant.</p>
 				</div>
 				<?php if ( current_user_can( 'manage_options' ) ) : ?>
-					<a class="button" href="<?php echo esc_url( $this->export_url( $range ) ); ?>">Export Summary CSV</a>
+					<div class="smtp-analytics-actions">
+						<a class="button" href="<?php echo esc_url( $this->export_url( $range ) ); ?>">Export Summary CSV</a>
+						<a class="button button-primary" href="<?php echo esc_url( $this->pdf_url( $range ) ); ?>">Download PDF Report</a>
+					</div>
 				<?php endif; ?>
 			</div>
 
@@ -243,6 +246,11 @@ final class SMTP_Analytics_Admin {
 	private function export_url( SMTP_Analytics_Date_Range $range ): string {
 		$args = array_merge( array( 'action' => 'smtp_export_analytics' ), $range->query_args() );
 		return wp_nonce_url( add_query_arg( $args, admin_url( 'admin-post.php' ) ), 'smtp_export_analytics' );
+	}
+
+	private function pdf_url( SMTP_Analytics_Date_Range $range ): string {
+		$args = array_merge( array( 'action' => 'smtp_export_analytics_pdf' ), $range->query_args() );
+		return wp_nonce_url( add_query_arg( $args, admin_url( 'admin-post.php' ) ), 'smtp_export_analytics_pdf' );
 	}
 
 	private function format_money( float $amount ): string {

@@ -7,7 +7,7 @@ $rest = file_get_contents( $root . '/includes/modules/products/class-smtp-produc
 $main = file_get_contents( $root . '/source-more-platform.php' );
 
 $checks = array(
-    'plugin version 3.7.0' => strpos( $main, "SMTP_PLATFORM_VERSION', '3.7.0" ) !== false,
+    'plugin version 3.7.1' => strpos( $main, "SMTP_PLATFORM_VERSION', '3.7.1" ) !== false,
     'configured notification email' => strpos( $rest, "options['notification_email']" ) !== false,
     'customer confirmation' => strpos( $rest, 'We received your quote request:' ) !== false,
     'admin delivery logging' => strpos( $rest, 'Quote request admin email failed' ) !== false,

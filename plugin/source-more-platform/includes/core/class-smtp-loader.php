@@ -66,6 +66,7 @@ final class SMTP_Loader {
 			'includes/modules/analytics/class-smtp-analytics-repository.php',
 			'includes/modules/analytics/class-smtp-analytics-service.php',
 			'includes/modules/analytics/class-smtp-analytics-export.php',
+			'includes/modules/analytics/class-smtp-analytics-pdf.php',
 			'includes/modules/analytics/class-smtp-analytics-admin.php',
 			'includes/modules/analytics/class-smtp-analytics-module.php',
 			'includes/class-smtp-diagnostics.php',

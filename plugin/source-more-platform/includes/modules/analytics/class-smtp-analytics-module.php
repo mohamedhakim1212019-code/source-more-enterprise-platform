@@ -16,6 +16,7 @@ final class SMTP_Analytics_Module {
 	private SMTP_Analytics_Service $service;
 	private SMTP_Analytics_Admin $admin;
 	private SMTP_Analytics_Export $export;
+	private SMTP_Analytics_PDF $pdf;
 	private bool $booted = false;
 
 	private function __construct() {
@@ -24,6 +25,7 @@ final class SMTP_Analytics_Module {
 		$this->service    = new SMTP_Analytics_Service( $this->repository, $crm );
 		$this->admin      = new SMTP_Analytics_Admin( $this->service, $crm );
 		$this->export     = new SMTP_Analytics_Export( $this->service );
+		$this->pdf        = new SMTP_Analytics_PDF( $this->service );
 	}
 
 	public static function instance(): self {
@@ -43,6 +45,7 @@ final class SMTP_Analytics_Module {
 
 		$module->admin->register_hooks();
 		$module->export->register_hooks();
+		$module->pdf->register_hooks();
 		$module->booted = true;
 		do_action( 'smtp_analytics_module_booted', $module );
 	}
@@ -65,5 +68,9 @@ final class SMTP_Analytics_Module {
 
 	public function export(): SMTP_Analytics_Export {
 		return $this->export;
+	}
+
+	public function pdf(): SMTP_Analytics_PDF {
+		return $this->pdf;
 	}
 }

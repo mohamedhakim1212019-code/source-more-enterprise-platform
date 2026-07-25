@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.7.0' );
+define( 'SMTP_PLATFORM_VERSION', '3.7.1' );
 define( 'SMTP_PLATFORM_DB_VERSION', '3.1.0' );
 define( 'SMTP_PLATFORM_FILE', __FILE__ );
 define( 'SMTP_PLATFORM_DIR', dirname( __DIR__ ) . '/' );
@@ -95,6 +95,7 @@ $runtime_files = array(
 	'includes/modules/analytics/class-smtp-analytics-repository.php',
 	'includes/modules/analytics/class-smtp-analytics-service.php',
 	'includes/modules/analytics/class-smtp-analytics-export.php',
+	'includes/modules/analytics/class-smtp-analytics-pdf.php',
 	'includes/modules/analytics/class-smtp-analytics-admin.php',
 	'includes/modules/analytics/class-smtp-analytics-module.php',
 	'includes/class-smtp-diagnostics.php',

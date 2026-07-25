@@ -129,7 +129,7 @@ final class SMTP_Platform {
 				array( 'SMTP_Analytics_Module', 'boot' ),
 				array( 'settings', 'leads' ),
 				static fn(): bool => SMTP_Modules::enabled( 'analytics' ),
-				array( 'SMTP_Analytics_Module', 'SMTP_Analytics_Service', 'SMTP_Analytics_Repository', 'SMTP_CRM_Repository' )
+				array( 'SMTP_Analytics_Module', 'SMTP_Analytics_Service', 'SMTP_Analytics_Repository', 'SMTP_Analytics_PDF', 'SMTP_CRM_Repository' )
 			)
 		);
 

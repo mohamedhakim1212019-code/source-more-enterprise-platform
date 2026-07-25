@@ -1,10 +1,10 @@
-Source More Platform 3.7.0
+Source More Platform 3.7.1
 ==========================
 Requirements: WordPress 6.4+, PHP 8.0+.
 
 Installation
 1. Back up the WordPress database and the existing plugin directory.
-2. Upload and activate Source More Platform v3.7.0.
+2. Upload and activate Source More Platform v3.7.1.
 3. Open Source More CRM > Settings and verify the saved module controls.
 4. Open Source More CRM > Diagnostics and confirm there are no new boot errors.
 5. Save Settings > Permalinks only if routes or product archives do not resolve normally.

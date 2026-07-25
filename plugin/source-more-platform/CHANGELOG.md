@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.7.1
+
+- Added a branded, multi-page PDF export alongside the existing Analytics CSV export.
+- Added printable Executive Summary, Lead and Quote Request pipelines, opportunity sources, Fleet value, AI performance, Product Demand, and Recent Opportunities sections.
+- Added page headers, page numbers, EGP financial formatting, and automatic table pagination without external PDF libraries.
+- Kept the database version at 3.1.0 because this release requires no schema migration.
+
 ## 3.7.0
 
 - Added an independent Reports & Analytics module with dedicated date-range, repository, aggregation, administration, and CSV export services.
