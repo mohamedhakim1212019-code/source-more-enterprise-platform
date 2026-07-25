@@ -92,6 +92,9 @@ class SMTP_Dashboard {
 					<a class="button" href="<?php echo esc_url( admin_url( 'edit.php?post_type=' . SMTP_Assistant_Content_Types::CONVERSATION_POST_TYPE ) ); ?>">View AI Conversations</a>
 					<a class="button" href="<?php echo esc_url( admin_url( 'edit.php?post_type=' . SMTP_Assistant_Content_Types::KNOWLEDGE_POST_TYPE ) ); ?>">Manage AI Knowledge</a>
 				<?php endif; ?>
+				<?php if ( SMTP_Modules::enabled( 'analytics' ) ) : ?>
+					<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=smtp-analytics' ) ); ?>">Reports &amp; Analytics</a>
+				<?php endif; ?>
 				<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=smtp-settings' ) ); ?>">Platform Settings</a>
 			</div>
 			<h2>System status</h2>

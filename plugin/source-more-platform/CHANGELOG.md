@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.7.0
+
+- Added an independent Reports & Analytics module with dedicated date-range, repository, aggregation, administration, and CSV export services.
+- Added preset and custom reporting periods without changing the database schema.
+- Added consolidated commercial KPIs across CRM Leads and Product Quote Requests, including open pipeline, Won, Lost, and closed win rate.
+- Added clickable Lead and Quote Request pipeline analysis linked to the existing filtered CRM lists.
+- Added opportunity-source performance for Fleet Calculator, AI Assistant, Website Contact, Product Quote Form, and Manual records.
+- Added Fleet Assessment value metrics in EGP, including assessed devices, current annual cost, annual savings, three-year savings, and average optimization rate.
+- Added AI Assistant conversation, message, lead-conversion, and average-message metrics.
+- Added Product Demand aggregation from Quote Requests and a recent-opportunities drill-down table.
+- Added a privacy-safe summary CSV export and a new Reports & Analytics module control.
+- Kept the database version at 3.1.0 because this release reads existing WordPress posts and metadata and requires no schema migration.
+
 ## 3.6.1
 
 - Integrated the enterprise theme Request a Consultation form with Source More CRM.

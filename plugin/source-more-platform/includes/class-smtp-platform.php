@@ -123,6 +123,18 @@ final class SMTP_Platform {
 
 		SMTP_Module_Registry::register(
 			new SMTP_Module(
+				'analytics',
+				'Reports and Analytics',
+				SMTP_PLATFORM_VERSION,
+				array( 'SMTP_Analytics_Module', 'boot' ),
+				array( 'settings', 'leads' ),
+				static fn(): bool => SMTP_Modules::enabled( 'analytics' ),
+				array( 'SMTP_Analytics_Module', 'SMTP_Analytics_Service', 'SMTP_Analytics_Repository', 'SMTP_CRM_Repository' )
+			)
+		);
+
+		SMTP_Module_Registry::register(
+			new SMTP_Module(
 				'diagnostics',
 				'Diagnostics and Operational Logs',
 				SMTP_PLATFORM_VERSION,

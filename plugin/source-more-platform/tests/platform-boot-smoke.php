@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.6.1' );
+define( 'SMTP_PLATFORM_VERSION', '3.7.0' );
 define( 'SMTP_PLATFORM_DB_VERSION', '3.1.0' );
 define( 'SMTP_PLATFORM_FILE', __FILE__ );
 define( 'SMTP_PLATFORM_DIR', dirname( __DIR__ ) . '/' );
@@ -91,6 +91,12 @@ $runtime_files = array(
 	'includes/modules/assistant/class-smtp-assistant-admin.php',
 	'includes/modules/assistant/class-smtp-assistant-module.php',
 	'includes/class-smtp-assistant.php',
+	'includes/modules/analytics/class-smtp-analytics-date-range.php',
+	'includes/modules/analytics/class-smtp-analytics-repository.php',
+	'includes/modules/analytics/class-smtp-analytics-service.php',
+	'includes/modules/analytics/class-smtp-analytics-export.php',
+	'includes/modules/analytics/class-smtp-analytics-admin.php',
+	'includes/modules/analytics/class-smtp-analytics-module.php',
 	'includes/class-smtp-diagnostics.php',
 	'includes/class-smtp-platform.php',
 );
@@ -102,7 +108,7 @@ foreach ( $runtime_files as $runtime_file ) {
 SMTP_Platform::init();
 $statuses = SMTP_Module_Registry::statuses();
 
-foreach ( array( 'settings', 'dashboard', 'leads', 'products', 'fleet', 'assistant', 'diagnostics' ) as $module_id ) {
+foreach ( array( 'settings', 'dashboard', 'leads', 'products', 'fleet', 'assistant', 'analytics', 'diagnostics' ) as $module_id ) {
 	if ( 'booted' !== ( $statuses[ $module_id ]['status'] ?? '' ) ) {
 		fwrite( STDERR, 'FAIL: ' . $module_id . ' did not boot.' . PHP_EOL );
 		exit( 1 );

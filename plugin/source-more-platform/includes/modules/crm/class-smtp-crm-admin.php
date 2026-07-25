@@ -332,6 +332,11 @@ final class SMTP_CRM_Admin {
 			}
 			echo '</select>';
 		}
+
+		$current_from = $this->valid_date( sanitize_text_field( wp_unslash( $_GET['smtp_crm_from'] ?? '' ) ) );
+		$current_to   = $this->valid_date( sanitize_text_field( wp_unslash( $_GET['smtp_crm_to'] ?? '' ) ) );
+		echo '<input type="date" name="smtp_crm_from" value="' . esc_attr( $current_from ) . '" aria-label="From date">';
+		echo '<input type="date" name="smtp_crm_to" value="' . esc_attr( $current_to ) . '" aria-label="To date">';
 	}
 
 	public function apply_filters( $query ): void {
@@ -368,6 +373,29 @@ final class SMTP_CRM_Admin {
 		if ( $meta_query ) {
 			$query->set( 'meta_query', $meta_query );
 		}
+
+		$from = $this->valid_date( sanitize_text_field( wp_unslash( $_GET['smtp_crm_from'] ?? '' ) ) );
+		$to   = $this->valid_date( sanitize_text_field( wp_unslash( $_GET['smtp_crm_to'] ?? '' ) ) );
+
+		if ( $from || $to ) {
+			$date_query = array( 'inclusive' => true );
+			if ( $from ) {
+				$date_query['after'] = $from . ' 00:00:00';
+			}
+			if ( $to ) {
+				$date_query['before'] = $to . ' 23:59:59';
+			}
+			$query->set( 'date_query', array( $date_query ) );
+		}
+	}
+
+	private function valid_date( string $value ): string {
+		if ( ! preg_match( '/^\d{4}-\d{2}-\d{2}$/', $value ) ) {
+			return '';
+		}
+
+		$parts = array_map( 'intval', explode( '-', $value ) );
+		return checkdate( $parts[1], $parts[2], $parts[0] ) ? $value : '';
 	}
 
 	private function save_management( int $post_id ): void {

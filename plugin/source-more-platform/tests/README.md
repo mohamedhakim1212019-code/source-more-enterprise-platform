@@ -3,6 +3,9 @@
 Run the isolated smoke tests from the plugin directory:
 
 ```bash
+php tests/analytics-date-range-smoke.php
+php tests/analytics-module-smoke.php
+php tests/analytics-service-smoke.php
 php tests/module-registry-smoke.php
 php tests/assistant-module-smoke.php
 php tests/assistant-knowledge-smoke.php
@@ -25,6 +28,8 @@ The Fleet tests verify calculation accuracy, bounded assumptions, controlled mod
 
 The CRM tests verify CRM data management, assignment, status, source tracking, activity history, exports, Quote Request integration, and website contact-form lead capture.
 
-The platform boot test verifies that all default v3.6.1 modules compose successfully and repeated initialization does not duplicate hooks.
+The Analytics tests verify date-range normalization, controlled module boot, pipeline aggregation, source attribution, Fleet value, AI conversion, Product Demand, and recent-opportunity reporting.
+
+The platform boot test verifies that all default v3.7.0 modules compose successfully and repeated initialization does not duplicate hooks.
 
 WordPress integration testing is still required in LocalWP because these tests intentionally isolate the core architecture.
