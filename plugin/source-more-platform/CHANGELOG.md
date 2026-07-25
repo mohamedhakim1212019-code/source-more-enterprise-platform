@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.5.0
+
+- Refactored Fleet Savings Calculator into an independent Fleet Assessment module.
+- Separated calculation, frontend capture, REST delivery, notifications, report access, and PDF rendering into dedicated services.
+- Kept the existing calculator page, shortcode, lead metadata, REST v1/v2 routes, CRM records, emails, and report URLs compatible.
+- Added public token-protected report downloads for customers who are not logged in to WordPress.
+- Added calculation filters and a `smtp_fleet_assessment_created` integration event.
+- Retained `SMTP_Leads`, `SMTP_REST`, `SMTP_CRM_REST`, `SMTP_CRM_Frontend`, `SMTP_CRM_Notifications`, and `SMTP_Simple_PDF` as compatibility facades.
+- Kept the database version at 3.1.0 because no schema migration is required.
+
 ## 3.4.1
 - Split the CRM dashboard into complete Lead Pipeline and Quote Request Pipeline sections.
 - Added Total, New, Contacted, Qualified, Proposal, Won, and Lost metrics for both record types.

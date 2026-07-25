@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.4.1' );
+define( 'SMTP_PLATFORM_VERSION', '3.5.0' );
 define( 'SMTP_PLATFORM_DB_VERSION', '3.1.0' );
 define( 'SMTP_PLATFORM_FILE', __FILE__ );
 define( 'SMTP_PLATFORM_DIR', dirname( __DIR__ ) . '/' );
@@ -53,15 +53,22 @@ $runtime_files = array(
 	'includes/class-smtp-modules.php',
 	'includes/class-smtp-logger.php',
 	'includes/class-smtp-rate-limiter.php',
-	'includes/class-smtp-pdf.php',
 	'includes/class-smtp-dashboard.php',
 	'includes/modules/crm/class-smtp-crm-content-types.php',
 	'includes/modules/crm/class-smtp-crm-repository.php',
-	'includes/modules/crm/class-smtp-crm-notifications.php',
 	'includes/modules/crm/class-smtp-crm-admin.php',
+	'includes/modules/crm/class-smtp-crm-module.php',
+	'includes/modules/fleet/class-smtp-fleet-calculator.php',
+	'includes/modules/fleet/class-smtp-fleet-pdf.php',
+	'includes/modules/fleet/class-smtp-fleet-report.php',
+	'includes/modules/fleet/class-smtp-fleet-notifications.php',
+	'includes/modules/fleet/class-smtp-fleet-frontend.php',
+	'includes/modules/fleet/class-smtp-fleet-rest.php',
+	'includes/modules/fleet/class-smtp-fleet-module.php',
+	'includes/modules/crm/class-smtp-crm-notifications.php',
 	'includes/modules/crm/class-smtp-crm-frontend.php',
 	'includes/modules/crm/class-smtp-crm-rest.php',
-	'includes/modules/crm/class-smtp-crm-module.php',
+	'includes/class-smtp-pdf.php',
 	'includes/modules/products/class-smtp-products-content-types.php',
 	'includes/modules/products/class-smtp-products-repository.php',
 	'includes/modules/products/class-smtp-products-admin.php',
@@ -84,7 +91,7 @@ foreach ( $runtime_files as $runtime_file ) {
 SMTP_Platform::init();
 $statuses = SMTP_Module_Registry::statuses();
 
-foreach ( array( 'settings', 'dashboard', 'leads', 'products', 'rest', 'assistant', 'diagnostics' ) as $module_id ) {
+foreach ( array( 'settings', 'dashboard', 'leads', 'products', 'fleet', 'assistant', 'diagnostics' ) as $module_id ) {
 	if ( 'booted' !== ( $statuses[ $module_id ]['status'] ?? '' ) ) {
 		fwrite( STDERR, 'FAIL: ' . $module_id . ' did not boot.' . PHP_EOL );
 		exit( 1 );

@@ -71,12 +71,12 @@ final class SMTP_Platform {
 		SMTP_Module_Registry::register(
 			new SMTP_Module(
 				'leads',
-				'CRM and Fleet Leads',
+				'CRM and Lead Management',
 				SMTP_PLATFORM_VERSION,
 				array( 'SMTP_CRM_Module', 'boot' ),
 				array( 'settings' ),
 				static fn(): bool => SMTP_Modules::enabled( 'crm' ) || SMTP_Modules::enabled( 'fleet' ),
-				array( 'SMTP_CRM_Module', 'SMTP_Leads', 'SMTP_Simple_PDF' )
+				array( 'SMTP_CRM_Module', 'SMTP_Leads' )
 			)
 		);
 
@@ -94,13 +94,13 @@ final class SMTP_Platform {
 
 		SMTP_Module_Registry::register(
 			new SMTP_Module(
-				'rest',
-				'Platform REST API',
+				'fleet',
+				'Fleet Assessment Engine',
 				SMTP_PLATFORM_VERSION,
-				array( 'SMTP_REST', 'init' ),
+				array( 'SMTP_Fleet_Module', 'boot' ),
 				array( 'settings', 'leads' ),
-				static fn(): bool => SMTP_Modules::enabled( 'crm' ) || SMTP_Modules::enabled( 'fleet' ),
-				array( 'SMTP_REST', 'SMTP_CRM_REST', 'SMTP_Rate_Limiter', 'SMTP_Leads', 'SMTP_Settings' )
+				static fn(): bool => SMTP_Modules::enabled( 'fleet' ),
+				array( 'SMTP_Fleet_Module', 'SMTP_Fleet_Calculator', 'SMTP_Fleet_Report', 'SMTP_Fleet_REST', 'SMTP_Rate_Limiter', 'SMTP_Settings' )
 			)
 		);
 

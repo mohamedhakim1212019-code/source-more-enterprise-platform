@@ -1,10 +1,10 @@
-Source More Platform 3.4.1
+Source More Platform 3.5.0
 ==========================
 Requirements: WordPress 6.4+, PHP 8.0+.
 
 Installation
 1. Back up the WordPress database and the existing plugin directory.
-2. Upload and activate Source More Platform v3.4.1.
+2. Upload and activate Source More Platform v3.5.0.
 3. Open Source More CRM > Settings and verify the saved module controls.
 4. Open Source More CRM > Diagnostics and confirm there are no new boot errors.
 5. Save Settings > Permalinks only if routes or product archives do not resolve normally.
@@ -15,10 +15,12 @@ Platform architecture
 - The registry resolves dependencies and boots enabled modules exactly once.
 - Existing module settings remain compatible: CRM, Products, Fleet, AI Assistant, and Diagnostics.
 - Product Center is composed from independent content-type, repository, admin, frontend, and REST components.
-- CRM is composed from independent content-type, repository, administration, frontend, REST, and notification components.
+- CRM is composed from independent content-type, repository, and administration components.
+- Fleet Assessment is composed from independent calculation, frontend, REST, notification, report-access, and PDF components.
 
 CRM capabilities
-- Fleet Lead capture and branded PDF reports.
+- Fleet Lead capture is provided by the independent Fleet Assessment Engine.
+- Branded PDF reports use expiring token-protected links that also work for logged-out customers.
 - Lead stages, source tracking, assignment, last activity, and activity history.
 - Product Quote Request integration for CRM status and assignment management.
 - Lead and Quote Request dashboard metrics.

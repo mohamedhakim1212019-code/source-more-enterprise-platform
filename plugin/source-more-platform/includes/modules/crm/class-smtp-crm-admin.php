@@ -29,7 +29,6 @@ final class SMTP_CRM_Admin {
 		add_action( 'save_post_' . SMTP_CRM_Content_Types::POST_TYPE, array( $this, 'save_lead' ) );
 		add_action( 'save_post_' . SMTP_CRM_Repository::QUOTE_POST_TYPE, array( $this, 'save_quote_request' ) );
 		add_action( 'admin_post_smt_export_leads', array( $this, 'export_csv' ) );
-		add_action( 'admin_post_smt_download_report', array( $this, 'download_report' ) );
 		add_action( 'admin_menu', array( $this, 'submenu' ) );
 		add_action( 'restrict_manage_posts', array( $this, 'filters' ) );
 		add_action( 'pre_get_posts', array( $this, 'apply_filters' ) );
@@ -265,20 +264,7 @@ final class SMTP_CRM_Admin {
 	}
 
 	public function download_report(): void {
-		$lead_id = absint( $_GET['lead'] ?? 0 );
-		$token   = sanitize_text_field( wp_unslash( $_GET['token'] ?? '' ) );
-		$hash    = (string) get_post_meta( $lead_id, 'report_token_hash', true );
-		$legacy  = (string) get_post_meta( $lead_id, 'report_token', true );
-		$expires = (int) get_post_meta( $lead_id, 'report_expires', true );
-		$valid   = $lead_id && ( ( $hash && wp_check_password( $token, $hash ) ) || ( $legacy && hash_equals( $legacy, $token ) ) );
-
-		if ( ! $valid || ( $expires && time() > $expires ) ) {
-			wp_die( 'Invalid or expired report link.', 403 );
-		}
-
-		$pdf = new SMTP_Simple_PDF();
-		$pdf->output_lead( $lead_id );
-		exit;
+		SMTP_Fleet_Module::instance()->report()->download();
 	}
 
 	public function filters(): void {

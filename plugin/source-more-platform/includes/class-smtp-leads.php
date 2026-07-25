@@ -2,8 +2,9 @@
 /**
  * Backward-compatible CRM and Fleet Leads facade.
  *
- * The implementation lives in includes/modules/crm. Existing integrations may
- * continue to use SMTP_Leads and its original public methods.
+ * CRM data management lives in includes/modules/crm. Fleet calculation,
+ * capture, reports, notifications, and REST delivery live in
+ * includes/modules/fleet.
  *
  * @package SourceMorePlatform
  */
@@ -22,6 +23,7 @@ class SMTP_Leads {
 
 	public static function init() {
 		SMTP_CRM_Module::boot();
+		SMTP_Fleet_Module::boot();
 	}
 
 	public static function register_post_type() {
@@ -29,11 +31,11 @@ class SMTP_Leads {
 	}
 
 	public static function assets() {
-		SMTP_CRM_Module::instance()->frontend()->assets();
+		SMTP_Fleet_Module::instance()->frontend()->assets();
 	}
 
 	public static function shortcode() {
-		return SMTP_CRM_Module::instance()->frontend()->shortcode();
+		return SMTP_Fleet_Module::instance()->frontend()->shortcode();
 	}
 
 	public static function columns( $columns ) {
@@ -73,6 +75,6 @@ class SMTP_Leads {
 	}
 
 	public static function download_report() {
-		SMTP_CRM_Module::instance()->admin()->download_report();
+		SMTP_Fleet_Module::instance()->report()->download();
 	}
 }
