@@ -11,6 +11,13 @@ final class SMTP_Rate_Limiter {
         set_transient($key, $data, $window);
         return true;
     }
+
+    /**
+     * Backward-compatible alias used by product quote endpoints.
+     */
+    public static function allow(string $bucket, int $limit = 10, int $window = 600): bool {
+        return self::check($bucket, $limit, $window);
+    }
     private static function ip(): string {
         $ip = isset($_SERVER['REMOTE_ADDR']) ? wp_unslash($_SERVER['REMOTE_ADDR']) : 'unknown';
         return preg_replace('/[^0-9a-fA-F:\.]/', '', $ip) ?: 'unknown';

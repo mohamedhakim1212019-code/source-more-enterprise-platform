@@ -16,7 +16,8 @@
     button.disabled = true;
     try {
       const response = await fetch(SMTPProducts.rest, {method:'POST',headers:{'Content-Type':'application/json','X-WP-Nonce':SMTPProducts.nonce},body:JSON.stringify(data)});
-      const payload = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      const payload = contentType.includes('application/json') ? await response.json() : {};
       if (!response.ok) throw new Error(payload.message || SMTPProducts.error);
       status.textContent = SMTPProducts.success;
       status.className = 'smtp-quote-status is-success';
