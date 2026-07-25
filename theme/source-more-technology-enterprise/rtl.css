@@ -1,1 +1,122 @@
 html[dir="rtl"],body.rtl{direction:rtl}body.rtl{font-family:Cairo,Arial,sans-serif}.header-inner,.primary-nav,.enterprise-menu,.header-tools,.brand,.footer-brand,.mega-resources>a,.industry-menu-grid a{direction:rtl}.mega-menu{left:50%}.mega-menu section>a,.mega-menu h3,.mega-feature,.footer-grid{text-align:right}.nav-parent i{margin-right:4px}.hero-grid,.split-grid,.section-heading,.calculator-banner,.footer-grid,.about-hero-grid,.mega-grid{direction:rtl}.hero-actions,.about-cta-actions,.ui-button-row{justify-content:flex-start}.experience-badge{right:auto;left:-20px}.hero-floating-card{left:auto;right:24px}.whatsapp-fab{right:auto;left:22px}.approach-step:not(:last-child)::after{right:auto;left:-21px}.ui-faq-item button{text-align:right}.ui-card-link i{transform:rotate(180deg)}@media(max-width:640px){.experience-badge{left:12px}.section-heading.centered,.ui-section-heading.is-center{text-align:right}}
+/* v7.3 showcase RTL */
+body.rtl .showcase-hero h1,body.rtl .showcase-hero p,body.rtl .partner-ecosystem-copy,body.rtl .platform-experience-copy{text-align:right}.showcase-hero[dir="rtl"] .showcase-float-top,body.rtl .showcase-float-top{right:auto;left:-10px}.showcase-hero[dir="rtl"] .showcase-float-bottom,body.rtl .showcase-float-bottom{left:auto;right:-22px}body.rtl .showcase-hero-stats article{border-right:0;border-left:1px solid var(--line)}body.rtl .showcase-hero-stats article:last-child{border-left:0}body.rtl .showcase-service-card.is-featured .service-icon{grid-column:2}body.rtl .showcase-service-card.is-featured .service-card-copy,body.rtl .showcase-service-card.is-featured a{grid-column:1}body.rtl .showcase-service-card.is-featured a i,body.rtl .technology-cta .btn i,body.rtl .partner-ecosystem .text-link i{transform:rotate(180deg)}body.rtl .node-print{left:auto;right:8%}body.rtl .node-cloud{right:auto;left:9%}body.rtl .node-security{right:auto;left:3%}body.rtl .node-infra{right:auto;left:12%}body.rtl .node-workflow{left:auto;right:10%}body.rtl .node-support{left:auto;right:3%}@media(max-width:1100px){body.rtl .showcase-hero-stats article:nth-child(2){border-left:0}}@media(max-width:700px){body.rtl .showcase-hero-stats article{border-left:0!important}body.rtl .showcase-service-card.is-featured .service-icon,body.rtl .showcase-service-card.is-featured .service-card-copy,body.rtl .showcase-service-card.is-featured a{grid-column:auto}.showcase-hero[dir="rtl"] .showcase-float-top,body.rtl .showcase-float-top{left:0}.showcase-hero[dir="rtl"] .showcase-float-bottom,body.rtl .showcase-float-bottom{right:0}}
+
+/* v7.3.1: move the complete brand lockup with the RTL header without mirroring it. */
+html[dir="rtl"] .site-branding,
+body.rtl .site-branding,
+html[dir="rtl"] .site-branding a,
+body.rtl .site-branding a,
+html[dir="rtl"] .brand,
+body.rtl .brand,
+html[dir="rtl"] .custom-logo-link,
+body.rtl .custom-logo-link{
+  direction:ltr;
+  flex-direction:row;
+  text-align:left;
+}
+
+/* v7.3.2 — Arabic marketing typography and floating action alignment. */
+body.rtl .showcase-hero .hero-copy{
+  max-width:760px;
+}
+body.rtl .showcase-hero h1{
+  max-width:760px;
+  font-size:clamp(40px,4.2vw,62px);
+  line-height:1.14;
+  letter-spacing:0;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+body.rtl .showcase-hero h1 span{
+  display:inline;
+}
+body.rtl .showcase-hero p{
+  max-width:720px;
+  font-size:clamp(17px,1.35vw,20px);
+  line-height:1.9;
+}
+body.rtl .showcase-kicker{
+  line-height:1.6;
+}
+body.rtl .hero-actions .fa-arrow-right,
+body.rtl .challenge-card a .fa-arrow-right,
+body.rtl .resource-home-card strong .fa-arrow-right,
+body.rtl .text-link .fa-arrow-right{
+  transform:rotate(180deg);
+}
+
+/* Keep all floating actions in one clear RTL stack, away from the hero copy. */
+body.rtl .smtp-ai-fab{
+  right:auto!important;
+  left:22px!important;
+  bottom:154px!important;
+}
+body.rtl .smtp-ai-panel{
+  right:auto!important;
+  left:22px!important;
+}
+body.rtl .calculator-fab{
+  right:auto!important;
+  left:22px!important;
+  bottom:94px!important;
+}
+body.rtl .whatsapp-fab{
+  right:auto!important;
+  left:22px!important;
+  bottom:22px!important;
+}
+
+@media(max-width:1100px){
+  body.rtl .showcase-hero h1{
+    max-width:900px;
+    font-size:clamp(38px,5.8vw,56px);
+  }
+}
+@media(max-width:700px){
+  body.rtl .showcase-hero h1{
+    font-size:clamp(32px,9.5vw,44px);
+    line-height:1.18;
+  }
+  body.rtl .showcase-hero p{
+    font-size:16px;
+    line-height:1.85;
+  }
+  body.rtl .smtp-ai-fab{
+    left:17px!important;
+    bottom:148px!important;
+  }
+  body.rtl .smtp-ai-panel{
+    left:15px!important;
+    right:auto!important;
+  }
+  body.rtl .calculator-fab{
+    left:17px!important;
+    right:auto!important;
+    bottom:88px!important;
+  }
+  body.rtl .whatsapp-fab{
+    left:17px!important;
+    right:auto!important;
+    bottom:20px!important;
+  }
+}
+
+
+/* v7.3.4 — calmer Arabic hero scale for stronger readability. */
+body.rtl .showcase-hero .hero-copy{max-width:820px}
+body.rtl .showcase-hero h1{max-width:820px}
+
+
+/* v7.3.5 — refined Arabic hero scale for a cleaner executive layout. */
+body.rtl .showcase-hero h1{
+  max-width:820px;
+  font-size:clamp(36px,3.5vw,54px);
+  line-height:1.16;
+}
+@media(max-width:1100px){
+  body.rtl .showcase-hero h1{font-size:clamp(34px,4.8vw,48px)}
+}
+@media(max-width:700px){
+  body.rtl .showcase-hero h1{font-size:clamp(29px,8vw,38px);line-height:1.2}
+}

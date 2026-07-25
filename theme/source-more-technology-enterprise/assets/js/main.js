@@ -1,10 +1,75 @@
 document.addEventListener('DOMContentLoaded',()=>{
- const toggle=document.querySelector('.menu-toggle'),nav=document.querySelector('.primary-nav'),header=document.getElementById('site-header');
- if(toggle&&nav) toggle.addEventListener('click',()=>{const open=nav.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open));document.body.classList.toggle('nav-open',open)});
- document.querySelectorAll('.nav-parent').forEach(btn=>btn.addEventListener('click',e=>{if(innerWidth<=1100){e.preventDefault();const item=btn.closest('.has-mega-menu'),open=item.classList.toggle('is-open');btn.setAttribute('aria-expanded',String(open));}}));
- document.addEventListener('click',e=>{if(innerWidth>1100&&!e.target.closest('.has-mega-menu'))document.querySelectorAll('.nav-parent').forEach(b=>b.setAttribute('aria-expanded','false'));});
+ const toggle=document.querySelector('.menu-toggle');
+ const nav=document.querySelector('.primary-nav');
+ const header=document.getElementById('site-header');
+ const backdrop=document.querySelector('.nav-backdrop');
+ const mobileBreakpoint=1100;
+
+ const closeSubmenus=(except=null)=>{
+  document.querySelectorAll('.menu-item-has-children.is-submenu-open').forEach(item=>{
+   if(item===except)return;
+   item.classList.remove('is-submenu-open');
+   item.querySelector(':scope > .submenu-toggle')?.setAttribute('aria-expanded','false');
+  });
+ };
+ const closeNav=()=>{
+  if(!toggle||!nav)return;
+  nav.classList.remove('is-open');
+  toggle.setAttribute('aria-expanded','false');
+  toggle.setAttribute('aria-label',smtTheme?.messages?.openNavigation||'Open navigation');
+  document.body.classList.remove('nav-open');
+  closeSubmenus();
+ };
+ const openNav=()=>{
+  if(!toggle||!nav)return;
+  nav.classList.add('is-open');
+  toggle.setAttribute('aria-expanded','true');
+  toggle.setAttribute('aria-label',smtTheme?.messages?.closeNavigation||'Close navigation');
+  document.body.classList.add('nav-open');
+ };
+
+ document.querySelectorAll('.enterprise-menu .menu-item-has-children').forEach((item,index)=>{
+  const link=item.querySelector(':scope > a');
+  const submenu=item.querySelector(':scope > .sub-menu');
+  if(!link||!submenu)return;
+  if(!submenu.id)submenu.id=`smt-submenu-${index+1}`;
+  const button=document.createElement('button');
+  button.type='button';
+  button.className='submenu-toggle';
+  button.setAttribute('aria-expanded','false');
+  button.setAttribute('aria-controls',submenu.id);
+  button.setAttribute('aria-label',`${smtTheme?.messages?.toggleSubmenu||'Toggle submenu'}: ${link.textContent.trim()}`);
+  item.insertBefore(button,submenu);
+  button.addEventListener('click',event=>{
+   event.preventDefault();
+   event.stopPropagation();
+   const willOpen=!item.classList.contains('is-submenu-open');
+   if(innerWidth>mobileBreakpoint)closeSubmenus(item);
+   item.classList.toggle('is-submenu-open',willOpen);
+   button.setAttribute('aria-expanded',String(willOpen));
+  });
+ });
+
+ toggle?.addEventListener('click',()=>nav?.classList.contains('is-open')?closeNav():openNav());
+ backdrop?.addEventListener('click',closeNav);
+ document.addEventListener('click',event=>{
+  if(innerWidth>mobileBreakpoint&&!event.target.closest('.enterprise-menu .menu-item-has-children'))closeSubmenus();
+ });
+ document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+   if(nav?.classList.contains('is-open')){closeNav();toggle?.focus();}
+   else closeSubmenus();
+  }
+ });
+ document.querySelectorAll('.primary-nav a').forEach(link=>link.addEventListener('click',()=>{
+  if(innerWidth<=mobileBreakpoint)closeNav();
+ }));
+ addEventListener('resize',()=>{if(innerWidth>mobileBreakpoint)closeNav();},{passive:true});
  addEventListener('scroll',()=>header&&header.classList.toggle('is-scrolled',scrollY>12),{passive:true});
- const io='IntersectionObserver'in window?new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('is-visible')),{threshold:.12}):null;document.querySelectorAll('.reveal').forEach(x=>io?io.observe(x):x.classList.add('is-visible'));
+ header?.classList.toggle('is-scrolled',scrollY>12);
+
+ const io='IntersectionObserver'in window?new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('is-visible')),{threshold:.12}):null;
+ document.querySelectorAll('.reveal').forEach(x=>io?io.observe(x):x.classList.add('is-visible'));
  document.querySelectorAll('[data-accordion]').forEach(a=>a.querySelectorAll('.ui-faq-item button').forEach(b=>b.addEventListener('click',()=>{const ex=b.getAttribute('aria-expanded')==='true',answer=b.closest('.ui-faq-item')?.querySelector('.ui-faq-answer');b.setAttribute('aria-expanded',String(!ex));if(answer)answer.hidden=ex;})));
 });
 // v6.0 Fleet Savings Calculator

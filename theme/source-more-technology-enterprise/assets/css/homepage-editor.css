@@ -1,0 +1,38 @@
+.smt-homepage-editor .components-panel__body {
+    margin: 0 -16px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.smt-homepage-editor__content {
+    min-width: 0;
+}
+
+.smt-homepage-editor__notice {
+    margin: 0 0 16px;
+}
+
+.smt-homepage-editor__field,
+.smt-homepage-editor__field .components-base-control,
+.smt-homepage-editor__field .components-base-control__field {
+    min-width: 0;
+    width: 100%;
+}
+
+.smt-homepage-editor__field input,
+.smt-homepage-editor__field textarea {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+
+.smt-homepage-editor__field textarea {
+    min-height: 108px;
+    resize: vertical;
+}
+
+.smt-homepage-editor__field[dir="rtl"] label,
+.smt-homepage-editor__field[dir="rtl"] .components-base-control__help,
+.smt-homepage-editor__content[dir="rtl"] .components-notice__content,
+.smt-homepage-editor__content[dir="rtl"] .components-panel__body-title {
+    text-align: right;
+}

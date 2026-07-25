@@ -1,24 +1,20 @@
-<section class="section ai-advisor-section" id="ai-advisor">
+<section class="section platform-experience" id="smart-tools">
   <div class="container">
-    <div class="ai-advisor-card reveal">
-      <div class="ai-advisor-copy">
-        <span class="section-kicker light"><?php echo esc_html(smt_t('Ask Source More AI','اسأل مساعد Source More الذكي')); ?></span>
-        <h2><?php echo esc_html(smt_t('Get guidance before you speak with sales.','احصل على إرشاد قبل التحدث مع فريق المبيعات.')); ?></h2>
-        <p><?php echo esc_html(smt_t('Use our website assistant to explore services, compare options, understand managed print, or identify the right next step for your organization.','استخدم مساعد الموقع لاستكشاف الخدمات ومقارنة الخيارات وفهم الطباعة المُدارة أو تحديد الخطوة المناسبة لمؤسستك.')); ?></p>
-        <div class="advisor-prompts" aria-label="<?php echo esc_attr(smt_t('Suggested questions','أسئلة مقترحة')); ?>">
-          <span><i class="fa-solid fa-message"></i><?php echo esc_html(smt_t('How can I reduce print costs?','كيف أخفض تكاليف الطباعة؟')); ?></span>
-          <span><i class="fa-solid fa-message"></i><?php echo esc_html(smt_t('Which solution fits my company?','ما الحل المناسب لشركتي؟')); ?></span>
-          <span><i class="fa-solid fa-message"></i><?php echo esc_html(smt_t('What is Managed Print Services?','ما هي خدمات الطباعة المُدارة؟')); ?></span>
-        </div>
-        <div class="ai-advisor-actions">
-          <button class="btn btn-gold" type="button" data-open-smtp-assistant><i class="fa-solid fa-wand-magic-sparkles"></i><?php echo esc_html(smt_t('Open AI Advisor','افتح المساعد الذكي')); ?></button>
-          <a class="btn btn-outline" href="<?php echo esc_url(smt_page_url('contact')); ?>"><?php echo esc_html(smt_t('Talk to a Consultant','تحدث مع مستشار')); ?></a>
+    <div class="platform-experience-shell reveal">
+      <div class="platform-experience-copy">
+        <span class="section-kicker light"><?php echo esc_html(smt_home_value('tools_kicker')); ?></span>
+        <h2><?php echo esc_html(smt_home_value('tools_title')); ?></h2>
+        <p><?php echo esc_html(smt_home_value('tools_description')); ?></p>
+        <div class="platform-actions">
+          <button class="btn btn-gold" type="button" data-open-smtp-assistant><i class="fa-solid fa-wand-magic-sparkles"></i><?php echo esc_html(smt_home_value('tools_ai_label')); ?></button>
+          <a class="btn btn-outline" href="<?php echo esc_url(smt_page_url('fleet-savings-calculator')); ?>"><i class="fa-solid fa-calculator"></i><?php echo esc_html(smt_home_value('tools_calculator_label')); ?></a>
         </div>
       </div>
-      <div class="advisor-window" aria-hidden="true">
-        <div class="advisor-window-head"><span><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></span><strong>Source More AI</strong></div>
-        <div class="advisor-message advisor-bot"><i class="fa-solid fa-robot"></i><p><?php echo esc_html(smt_t('Tell me your business goal and I will guide you to the most relevant solution.','أخبرني بهدفك وسأرشدك إلى الحل الأنسب.')); ?></p></div>
-        <div class="advisor-options"><span><?php echo esc_html(smt_t('Reduce costs','خفض التكاليف')); ?></span><span><?php echo esc_html(smt_t('Improve security','تحسين الأمان')); ?></span><span><?php echo esc_html(smt_t('Digitize workflows','رقمنة سير العمل')); ?></span></div>
+      <div class="platform-tool-grid" aria-label="<?php echo esc_attr(smt_t('Source More digital tools','أدوات Source More الرقمية')); ?>">
+        <article><i class="fa-solid fa-robot"></i><div><strong><?php echo esc_html(smt_t('AI Guidance','مساعد ذكي')); ?></strong><span><?php echo esc_html(smt_t('Explore services and identify the next step.','استكشف الخيارات وحدد الخطوة التالية بصورة أسرع.')); ?></span></div></article>
+        <article><i class="fa-solid fa-chart-pie"></i><div><strong><?php echo esc_html(smt_t('Fleet Assessment','تقييم أسطول الطباعة')); ?></strong><span><?php echo esc_html(smt_t('Estimate print cost and optimization opportunity.','اكتشف التكلفة الحالية وفرص التحسين المحتملة.')); ?></span></div></article>
+        <article><i class="fa-solid fa-file-signature"></i><div><strong><?php echo esc_html(smt_t('Request a Quote','طلب عرض سعر')); ?></strong><span><?php echo esc_html(smt_t('Send product requirements directly to our team.','أرسل احتياجاتك لتحصل على عرض مخصص لمؤسستك.')); ?></span></div></article>
+        <article><i class="fa-solid fa-comments"></i><div><strong><?php echo esc_html(smt_t('Consultation Request','استشارة متخصصة')); ?></strong><span><?php echo esc_html(smt_t('Connect with a specialist around your priority.','تحدث مع خبير لمراجعة التحديات وتحديد الخطوة التالية.')); ?></span></div></article>
       </div>
     </div>
   </div>

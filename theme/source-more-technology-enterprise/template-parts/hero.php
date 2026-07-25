@@ -1,20 +1,42 @@
-<section class="hero home-hero"><div class="container hero-grid">
-<div class="hero-copy reveal">
-<span class="eyebrow"><?php echo esc_html(smt_t('Managed Print, IT & Digital Solutions','حلول الطباعة المُدارة وتكنولوجيا المعلومات والتحول الرقمي')); ?></span>
-<h1><?php echo esc_html(smt_t('One partner for smarter business technology.','شريك واحد لتكنولوجيا أعمال أكثر ذكاءً.')); ?></h1>
-<p><?php echo esc_html(smt_t('From Managed Print Services and IT infrastructure to cloud, cybersecurity, and workflow automation, Source More Technology delivers integrated solutions that reduce cost, improve control, and support sustainable growth.','من خدمات الطباعة المُدارة والبنية التحتية إلى السحابة والأمن السيبراني وأتمتة سير العمل، تقدم Source More Technology حلولاً متكاملة تخفض التكلفة وتحسن التحكم وتدعم النمو المستدام.')); ?></p>
-<div class="hero-actions">
-<a class="btn btn-outline" href="<?php echo esc_url(smt_page_url('contact')); ?>"><?php echo esc_html(smt_t('Book a Free Consultation','احجز استشارة مجانية')); ?></a>
-<a class="btn btn-gold hero-calculator-cta" href="<?php echo esc_url(smt_page_url('fleet-savings-calculator')); ?>"><i class="fa-solid fa-calculator"></i><?php echo esc_html(smt_t('Calculate Print Savings','احسب توفير الطباعة')); ?></a>
-</div>
-<div class="hero-proof">
-<span><i class="fa-solid fa-circle-check"></i><?php echo esc_html(smt_t('Enterprise-focused','خبرة للمؤسسات')); ?></span>
-<span><i class="fa-solid fa-circle-check"></i><?php echo esc_html(smt_t('Vendor-neutral advice','استشارات محايدة')); ?></span>
-<span><i class="fa-solid fa-circle-check"></i><?php echo esc_html(smt_t('Local support','دعم محلي')); ?></span>
-</div>
-</div>
-<div class="hero-visual reveal"><div class="hero-image-card">
-<img src="<?php echo esc_url(get_template_directory_uri().'/assets/images/hero-enterprise.svg'); ?>" alt="<?php echo esc_attr(smt_t('Integrated enterprise technology solutions','حلول تكنولوجية متكاملة للمؤسسات')); ?>">
-<div class="hero-floating-card"><i class="fa-solid fa-chart-line"></i><div><strong><?php echo esc_html(smt_t('Smarter Operations','عمليات أكثر ذكاءً')); ?></strong><small><?php echo esc_html(smt_t('Lower costs. Better control.','تكلفة أقل. تحكم أفضل.')); ?></small></div></div>
-<div class="hero-floating-card hero-floating-card-top"><i class="fa-solid fa-shield-halved"></i><div><strong><?php echo esc_html(smt_t('Secure by Design','أمان مدمج')); ?></strong><small><?php echo esc_html(smt_t('People, data and devices','الأفراد والبيانات والأجهزة')); ?></small></div></div>
-</div></div></div></section>
+<?php
+$hero_primary_url = smt_home_url_value('hero_primary_url', smt_page_url('solutions'));
+$hero_secondary_url = smt_home_url_value('hero_secondary_url', smt_page_url('contact'));
+$hero_image = smt_home_value('hero_image_url');
+if (!$hero_image) $hero_image = get_template_directory_uri() . '/assets/images/hero-showcase.svg';
+?>
+<section class="hero showcase-hero" aria-labelledby="showcase-hero-title">
+  <div class="showcase-hero-grid" aria-hidden="true"></div>
+  <div class="container hero-grid showcase-hero-inner">
+    <div class="hero-copy reveal">
+      <span class="showcase-kicker"><i class="fa-solid fa-sparkles"></i><?php echo esc_html(smt_home_value('hero_kicker')); ?></span>
+      <h1 id="showcase-hero-title"><?php echo wp_kses(smt_home_value('hero_title'), ['span'=>['class'=>true], 'strong'=>[], 'br'=>[]]); ?></h1>
+      <p><?php echo esc_html(smt_home_value('hero_description')); ?></p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="<?php echo esc_url($hero_primary_url); ?>"><?php echo esc_html(smt_home_value('hero_primary_label')); ?><i class="fa-solid fa-arrow-right"></i></a>
+        <a class="btn btn-outline" href="<?php echo esc_url($hero_secondary_url); ?>"><?php echo esc_html(smt_home_value('hero_secondary_label')); ?></a>
+      </div>
+      <div class="showcase-proof" aria-label="<?php echo esc_attr(smt_t('Our delivery strengths','نقاط قوة التنفيذ')); ?>">
+        <span><i class="fa-solid fa-circle-check"></i><?php echo esc_html(smt_t('Vendor-neutral guidance','اختيارات مدروسة تناسب احتياجك')); ?></span>
+        <span><i class="fa-solid fa-circle-check"></i><?php echo esc_html(smt_t('Local delivery and support','تنفيذ محلي ودعم مستمر')); ?></span>
+        <span><i class="fa-solid fa-circle-check"></i><?php echo esc_html(smt_t('Measurable business outcomes','نتائج أعمال قابلة للقياس')); ?></span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+      <div class="showcase-visual-shell">
+        <span class="showcase-orbit showcase-orbit-one"></span>
+        <span class="showcase-orbit showcase-orbit-two"></span>
+        <img src="<?php echo esc_url($hero_image); ?>" alt="<?php echo esc_attr(smt_t('Integrated technology platform covering print, cloud, infrastructure, security and automation','منظومة تقنية متكاملة تشمل الطباعة والسحابة والبنية التحتية والأمان والأتمتة')); ?>">
+        <div class="showcase-float showcase-float-top"><i class="fa-solid fa-shield-halved"></i><div><strong><?php echo esc_html(smt_t('Secure by Design','أمان يبدأ من التصميم')); ?></strong><small><?php echo esc_html(smt_t('People, data and devices','الأفراد والبيانات والأجهزة')); ?></small></div></div>
+        <div class="showcase-float showcase-float-bottom"><i class="fa-solid fa-chart-line"></i><div><strong><?php echo esc_html(smt_t('Operational Visibility','رؤية أوضح للأداء')); ?></strong><small><?php echo esc_html(smt_t('Cost, performance and control','التكلفة والأداء والتحكم')); ?></small></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container showcase-hero-stats reveal">
+    <article><strong>20+</strong><span><?php echo esc_html(smt_t('Years of combined market experience','عامًا من الخبرة المتراكمة في السوق')); ?></span></article>
+    <article><strong>8</strong><span><?php echo esc_html(smt_t('Core enterprise solution areas','مجالات أساسية لحلول الأعمال')); ?></span></article>
+    <article><strong>1</strong><span><?php echo esc_html(smt_t('Integrated delivery model','شريك واحد للتنفيذ المتكامل')); ?></span></article>
+    <article><strong>EG</strong><span><?php echo esc_html(smt_t('Local expertise for organizations in Egypt','خبرة محلية تفهم احتياجات السوق المصري')); ?></span></article>
+  </div>
+</section>

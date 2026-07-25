@@ -1,5 +1,46 @@
 # Changelog
 
+## 7.3.5
+- Added a dedicated full-width bilingual Homepage Content Manager under Appearance.
+- Removed dependency on unreliable Gutenberg legacy meta-box rendering for homepage copy editing.
+- Added English/Arabic language tabs linked to the corresponding Polylang homepage.
+- Added secure per-language saving and front-end preview links.
+- Reduced Arabic hero headline size for a cleaner executive layout.
+
+## 7.3.4
+- Restored a reliable editable Homepage Showcase Content meta box below Gutenberg.
+- Removed dependency on the unstable Gutenberg document-panel integration.
+- Kept independent English and Arabic homepage values and defaults.
+- Reduced Arabic hero headline sizing across desktop, tablet, and mobile.
+
+## 7.3.3
+- Fixed non-editable Homepage Showcase Content controls in Gutenberg.
+- Added native bilingual homepage editor panel backed by registered post meta.
+- Added Arabic editor labels and visible default copy.
+- Preserved independent English and Arabic homepage content.
+
+
+## 7.3.2
+- Added per-language editable homepage showcase fields for Polylang front-page translations.
+- Rewrote Arabic homepage defaults with a stronger Egyptian-market B2B marketing tone.
+- Improved Arabic hero typography and RTL floating action placement.
+- Preserved stable sticky header and identical brand-lockup composition across languages.
+
+## 7.3.1 — Header Stability Hotfix
+- Kept the sticky header below the WordPress admin bar while logged in.
+- Prevented the logo from being clipped during scrolling.
+- Kept the complete logo lockup visually identical in English and Arabic.
+- Corrected mobile navigation and backdrop offsets when the admin bar is visible.
+- Corrected mega-menu and anchor offsets for the sticky header.
+
+## 7.3.0 — Website Showcase Sprint A
+- Added premium bilingual partner-ready homepage.
+- Added technology coverage and ecosystem sections.
+- Added smart customer experience section integrated with SMEP tools.
+- Added non-destructive homepage layout switch.
+- Added new hero SVG and expanded responsive/RTL styling.
+
+
 ## 6.0.0
 - Added secure native contact workflow.
 - Added eight industry landing pages.
