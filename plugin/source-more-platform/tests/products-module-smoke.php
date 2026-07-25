@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.5.0' );
+define( 'SMTP_PLATFORM_VERSION', '3.6.1' );
 define( 'SMTP_PLATFORM_URL', 'https://example.test/wp-content/plugins/source-more-platform/' );
 
 $GLOBALS['smtp_product_test_hooks']         = array();

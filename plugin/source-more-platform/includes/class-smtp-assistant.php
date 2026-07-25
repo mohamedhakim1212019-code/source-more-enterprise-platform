@@ -1,19 +1,36 @@
 <?php
-if (!defined('ABSPATH')) { exit; }
-class SMTP_Assistant {
- public static function init(): void { add_action('wp_enqueue_scripts',[__CLASS__,'assets']); add_action('rest_api_init',[__CLASS__,'routes']); add_action('wp_footer',[__CLASS__,'markup']); }
- public static function routes(): void { foreach(['source-more/v1','source-more/v2'] as $ns)register_rest_route($ns,'/assistant',['methods'=>'POST','callback'=>[__CLASS__,'reply'],'permission_callback'=>'__return_true']); }
- private static function enabled(): bool { $o=SMTP_Settings::get(); return !empty($o['assistant_enabled']); }
- public static function assets(): void { if(!self::enabled())return; wp_enqueue_style('smtp-assistant',SMTP_PLATFORM_URL.'assets/css/assistant.css',[],SMTP_PLATFORM_VERSION); wp_enqueue_script('smtp-assistant',SMTP_PLATFORM_URL.'assets/js/assistant.js',[],SMTP_PLATFORM_VERSION,true); wp_localize_script('smtp-assistant','SMTPAssistant',['rest'=>rest_url('source-more/v2/assistant'),'nonce'=>wp_create_nonce('wp_rest'),'calculator'=>home_url('/fleet-savings-calculator/'),'contact'=>home_url('/contact/')]); }
- public static function markup(): void { if(!self::enabled())return; ?>
- <button class="smtp-ai-fab" id="smtp-ai-open" aria-label="Open Source More assistant" aria-controls="smtp-ai-panel" aria-expanded="false"><span>Ask Source More</span></button>
- <section class="smtp-ai-panel" id="smtp-ai-panel" role="dialog" aria-label="Source More Assistant" hidden><header><div><strong>Source More Assistant</strong><small>MPS & technology guidance</small></div><button id="smtp-ai-close" aria-label="Close">×</button></header><div class="smtp-ai-messages" id="smtp-ai-messages" aria-live="polite"><div class="smtp-ai-msg bot">Hello. I can help with print costs, Managed Print Services, document management, cloud, cybersecurity, and the next best step for your business.</div></div><div class="smtp-ai-quick"><button type="button" data-q="How can MPS reduce our costs?">MPS savings</button><button type="button" data-q="I want to calculate print savings">Calculate savings</button><button type="button" data-q="Book a fleet assessment">Book assessment</button></div><form id="smtp-ai-form"><label class="screen-reader-text" for="smtp-ai-input">Your question</label><input id="smtp-ai-input" maxlength="500" autocomplete="off" placeholder="Ask a business technology question…" required><button aria-label="Send">Send</button></form><small class="smtp-ai-note">Guidance is indicative. Commercial recommendations require an assessment.</small></section><?php }
- public static function reply(WP_REST_Request $r) {
-  if(!wp_verify_nonce($r->get_header('X-WP-Nonce'),'wp_rest'))return new WP_Error('bad_nonce','Security check failed.',['status'=>403]);
-  if(!SMTP_Rate_Limiter::check('assistant',20,600))return new WP_Error('rate_limited','Too many requests. Please try again shortly.',['status'=>429]);
-  $q=sanitize_text_field($r->get_param('message')); if(!$q || mb_strlen($q)>500)return new WP_Error('validation','Please enter a valid question.',['status'=>422]);
-  $o=SMTP_Settings::get(); $endpoint=esc_url_raw($o['assistant_endpoint']);
-  if($endpoint && str_starts_with(strtolower($endpoint),'https://')){$res=wp_remote_post($endpoint,['timeout'=>20,'redirection'=>2,'headers'=>['Content-Type'=>'application/json'],'body'=>wp_json_encode(['message'=>$q,'source'=>'source-more-wordpress'])]);if(!is_wp_error($res)&&wp_remote_retrieve_response_code($res)<300){$json=json_decode(wp_remote_retrieve_body($res),true);$text=$json['reply']??$json['message']??$json['response']??'';if($text)return ['reply'=>wp_strip_all_tags($text)];}else{SMTP_Logger::warning('Assistant endpoint failed',['error'=>is_wp_error($res)?$res->get_error_message():wp_remote_retrieve_response_code($res)]);}}
-  $l=strtolower($q); if(str_contains($l,'calculat')||str_contains($l,'saving'))$a='Use our Fleet Savings Calculator for an immediate estimate based on devices, monthly volumes, page costs, and service expenses.'; elseif(str_contains($l,'mps')||str_contains($l,'managed print'))$a='Managed Print Services combines fleet assessment, device optimization, supplies, maintenance, reporting, security controls, and predictable cost-per-page management.'; elseif(str_contains($l,'cloud')||str_contains($l,'microsoft'))$a='Source More supports Microsoft and cloud solutions for collaboration, identity, business continuity, and secure access.'; elseif(str_contains($l,'security')||str_contains($l,'cyber'))$a='Our cybersecurity approach covers risk assessment, network and endpoint protection, secure access, print security, and practical policies.'; elseif(str_contains($l,'book')||str_contains($l,'contact')||str_contains($l,'assessment'))$a='Request a free assessment through the Contact page and include your company, locations, device count, and preferred contact details.'; else $a='Source More provides Managed Print Services, enterprise printing, document management, IT infrastructure, cloud, cybersecurity, office automation, and maintenance contracts.'; return ['reply'=>$a];
- }
+/**
+ * Backward-compatible AI Assistant facade.
+ *
+ * @package SourceMorePlatform
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+final class SMTP_Assistant {
+	public static function init(): void {
+		SMTP_Assistant_Module::boot();
+	}
+
+	public static function routes(): void {
+		SMTP_Assistant_Module::instance()->rest()->routes();
+	}
+
+	public static function assets(): void {
+		SMTP_Assistant_Module::instance()->frontend()->assets();
+	}
+
+	public static function markup(): void {
+		SMTP_Assistant_Module::instance()->frontend()->markup();
+	}
+
+	public static function reply( WP_REST_Request $request ): WP_REST_Response|WP_Error {
+		return SMTP_Assistant_Module::instance()->rest()->reply( $request );
+	}
+
+	public static function capture_lead( WP_REST_Request $request ): WP_REST_Response|WP_Error {
+		return SMTP_Assistant_Module::instance()->rest()->capture_lead( $request );
+	}
 }

@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.5.0' );
+define( 'SMTP_PLATFORM_VERSION', '3.6.1' );
 define( 'SMTP_PLATFORM_DB_VERSION', '3.1.0' );
 define( 'SMTP_PLATFORM_FILE', __FILE__ );
 define( 'SMTP_PLATFORM_DIR', dirname( __DIR__ ) . '/' );
@@ -57,6 +57,7 @@ $runtime_files = array(
 	'includes/modules/crm/class-smtp-crm-content-types.php',
 	'includes/modules/crm/class-smtp-crm-repository.php',
 	'includes/modules/crm/class-smtp-crm-admin.php',
+	'includes/modules/crm/class-smtp-crm-contact-capture.php',
 	'includes/modules/crm/class-smtp-crm-module.php',
 	'includes/modules/fleet/class-smtp-fleet-calculator.php',
 	'includes/modules/fleet/class-smtp-fleet-pdf.php',
@@ -79,6 +80,16 @@ $runtime_files = array(
 	'includes/class-smtp-leads.php',
 	'includes/class-smtp-settings.php',
 	'includes/class-smtp-rest.php',
+	'includes/modules/assistant/class-smtp-assistant-content-types.php',
+	'includes/modules/assistant/class-smtp-assistant-conversations.php',
+	'includes/modules/assistant/class-smtp-assistant-knowledge.php',
+	'includes/modules/assistant/class-smtp-assistant-endpoint.php',
+	'includes/modules/assistant/class-smtp-assistant-service.php',
+	'includes/modules/assistant/class-smtp-assistant-lead-converter.php',
+	'includes/modules/assistant/class-smtp-assistant-rest.php',
+	'includes/modules/assistant/class-smtp-assistant-frontend.php',
+	'includes/modules/assistant/class-smtp-assistant-admin.php',
+	'includes/modules/assistant/class-smtp-assistant-module.php',
 	'includes/class-smtp-assistant.php',
 	'includes/class-smtp-diagnostics.php',
 	'includes/class-smtp-platform.php',

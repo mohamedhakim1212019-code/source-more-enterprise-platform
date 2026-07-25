@@ -1,10 +1,10 @@
-Source More Platform 3.5.0
+Source More Platform 3.6.1
 ==========================
 Requirements: WordPress 6.4+, PHP 8.0+.
 
 Installation
 1. Back up the WordPress database and the existing plugin directory.
-2. Upload and activate Source More Platform v3.5.0.
+2. Upload and activate Source More Platform v3.6.1.
 3. Open Source More CRM > Settings and verify the saved module controls.
 4. Open Source More CRM > Diagnostics and confirm there are no new boot errors.
 5. Save Settings > Permalinks only if routes or product archives do not resolve normally.
@@ -15,8 +15,15 @@ Platform architecture
 - The registry resolves dependencies and boots enabled modules exactly once.
 - Existing module settings remain compatible: CRM, Products, Fleet, AI Assistant, and Diagnostics.
 - Product Center is composed from independent content-type, repository, admin, frontend, and REST components.
-- CRM is composed from independent content-type, repository, and administration components.
+- CRM is composed from independent content-type, repository, administration, and website contact-capture components.
 - Fleet Assessment is composed from independent calculation, frontend, REST, notification, report-access, and PDF components.
+- AI Assistant is composed from independent knowledge, endpoint, conversation, REST, frontend, administration, and CRM conversion components.
+
+AI Assistant capabilities
+- Built-in deterministic knowledge with optional custom Knowledge entries.
+- Optional HTTPS external endpoint with automatic built-in fallback.
+- Token-protected conversation transcripts and retention cleanup.
+- Consent-based callback capture into CRM with notification emails.
 
 CRM capabilities
 - Fleet Lead capture is provided by the independent Fleet Assessment Engine.
@@ -24,11 +31,13 @@ CRM capabilities
 - Lead stages, source tracking, assignment, last activity, and activity history.
 - Product Quote Request integration for CRM status and assignment management.
 - Lead and Quote Request dashboard metrics.
+- Website Request a Consultation capture with CRM storage and dual email notifications.
 - CSV export with CRM ownership and activity fields.
 
 Compatibility
 - Keeps the v1 and v2 Fleet Lead REST routes.
 - Keeps the v2 and v3 Product Quote Request REST routes.
+- Keeps the v1 and v2 AI Assistant reply routes and provides v2/v3 Assistant Lead routes.
 - Existing leads, products, quote requests, settings, reports, metadata, and URLs remain compatible.
 - SMTP_Leads, SMTP_REST, and SMTP_Products remain available as backward-compatible facades.
 - SMTP_Platform::init() remains the supported runtime entry point.

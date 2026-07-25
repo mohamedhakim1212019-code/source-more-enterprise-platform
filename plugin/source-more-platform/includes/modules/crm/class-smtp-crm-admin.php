@@ -62,7 +62,8 @@ final class SMTP_CRM_Admin {
 		}
 
 		if ( 'savings' === $column ) {
-			echo 'EGP ' . esc_html( number_format( (float) get_post_meta( $post_id, 'annual_savings', true ), 0 ) );
+			$savings = (float) get_post_meta( $post_id, 'annual_savings', true );
+			echo $savings > 0 ? 'EGP ' . esc_html( number_format( $savings, 0 ) ) : '&mdash;';
 		}
 
 		if ( 'source' === $column ) {
@@ -96,7 +97,7 @@ final class SMTP_CRM_Admin {
 	public function meta_boxes(): void {
 		add_meta_box(
 			'smtp_lead_details',
-			'Fleet Assessment Details',
+			'CRM Lead Details',
 			array( $this, 'lead_meta_box' ),
 			SMTP_CRM_Content_Types::POST_TYPE,
 			'normal',
@@ -134,31 +135,70 @@ final class SMTP_CRM_Admin {
 	}
 
 	public function lead_meta_box( $post ): void {
+		$source = $this->repository->source( $post->ID );
 		$fields = array(
-			'company'        => 'Company',
-			'contact_name'   => 'Contact person',
-			'email'          => 'Email',
-			'phone'          => 'Phone',
-			'industry'       => 'Industry',
-			'locations'      => 'Locations',
-			'devices'        => 'Devices',
-			'mono_pages'     => 'Monthly mono pages',
-			'color_pages'    => 'Monthly color pages',
-			'mono_cpp'       => 'Mono CPP',
-			'color_cpp'      => 'Color CPP',
-			'fixed_cost'     => 'Monthly fixed cost',
-			'saving_rate'    => 'Optimization rate',
-			'current_cost'   => 'Current annual cost',
-			'annual_savings' => 'Annual savings',
-			'optimized_cost' => 'Optimized annual cost',
-			'three_year'     => 'Three-year savings',
-			'lead_source'    => 'Lead source',
-			'source_url'     => 'Source URL',
+			'company'           => 'Company',
+			'contact_name'      => 'Contact person',
+			'email'             => 'Email',
+			'phone'             => 'Phone',
+			'lead_source'       => 'Lead source',
+			'source_url'        => 'Source URL',
+			'consent_timestamp' => 'Consent timestamp',
 		);
+
+		$has_fleet_data = 'fleet-calculator' === $source || array_filter(
+			array(
+				get_post_meta( $post->ID, 'devices', true ),
+				get_post_meta( $post->ID, 'current_cost', true ),
+				get_post_meta( $post->ID, 'annual_savings', true ),
+			)
+		);
+
+		if ( $has_fleet_data ) {
+			$fields += array(
+				'industry'       => 'Industry',
+				'locations'      => 'Locations',
+				'devices'        => 'Devices',
+				'mono_pages'     => 'Monthly mono pages',
+				'color_pages'    => 'Monthly color pages',
+				'mono_cpp'       => 'Mono CPP',
+				'color_cpp'      => 'Color CPP',
+				'fixed_cost'     => 'Monthly fixed cost',
+				'saving_rate'    => 'Optimization rate',
+				'current_cost'   => 'Current annual cost',
+				'annual_savings' => 'Annual savings',
+				'optimized_cost' => 'Optimized annual cost',
+				'three_year'     => 'Three-year savings',
+			);
+		}
+
+		if ( 'website-contact' === $source || get_post_meta( $post->ID, 'contact_message', true ) ) {
+			$fields += array(
+				'contact_interest' => 'Area of interest',
+				'contact_message'  => 'Inquiry message',
+			);
+		}
+
+		if ( 'ai-assistant' === $source || get_post_meta( $post->ID, 'assistant_message', true ) ) {
+			$fields += array(
+				'assistant_message'         => 'Assistant request',
+				'assistant_conversation_id' => 'AI conversation ID',
+			);
+		}
 
 		echo '<table class="widefat striped"><tbody>';
 		foreach ( $fields as $key => $label ) {
-			echo '<tr><th style="width:230px">' . esc_html( $label ) . '</th><td>' . esc_html( get_post_meta( $post->ID, $key, true ) ) . '</td></tr>';
+			$value = get_post_meta( $post->ID, $key, true );
+			if ( is_array( $value ) ) {
+				$value = implode( ', ', array_map( 'strval', $value ) );
+			}
+			echo '<tr><th style="width:230px">' . esc_html( $label ) . '</th><td>';
+			if ( in_array( $key, array( 'contact_message', 'assistant_message' ), true ) ) {
+				echo nl2br( esc_html( (string) $value ) );
+			} else {
+				echo esc_html( (string) $value );
+			}
+			echo '</td></tr>';
 		}
 		echo '</tbody></table>';
 
@@ -214,7 +254,7 @@ final class SMTP_CRM_Admin {
 	}
 
 	public function export_page(): void {
-		echo '<div class="wrap"><h1>Export Source More Leads</h1><p>Download all calculator leads and assessment results as a CSV file.</p><a class="button button-primary" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=smt_export_leads' ), 'smtp_export' ) ) . '">Download CSV</a></div>';
+		echo '<div class="wrap"><h1>Export Source More Leads</h1><p>Download all CRM leads, contact inquiries, and assessment results as a CSV file.</p><a class="button button-primary" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=smt_export_leads' ), 'smtp_export' ) ) . '">Download CSV</a></div>';
 	}
 
 	public function export_csv(): void {
@@ -235,7 +275,7 @@ final class SMTP_CRM_Admin {
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename=source-more-leads-' . gmdate( 'Y-m-d' ) . '.csv' );
 		$output = fopen( 'php://output', 'w' );
-		fputcsv( $output, array( 'Date', 'Company', 'Contact', 'Email', 'Phone', 'Industry', 'Locations', 'Devices', 'Annual Savings', 'Current Cost', 'Status', 'Source', 'Assigned To', 'Last Activity' ) );
+		fputcsv( $output, array( 'Date', 'Company', 'Contact', 'Email', 'Phone', 'Industry', 'Area of Interest', 'Inquiry Message', 'Locations', 'Devices', 'Annual Savings', 'Current Cost', 'Status', 'Source', 'Assigned To', 'Last Activity' ) );
 
 		foreach ( $leads as $lead ) {
 			fputcsv(
@@ -247,6 +287,8 @@ final class SMTP_CRM_Admin {
 					get_post_meta( $lead->ID, 'email', true ),
 					get_post_meta( $lead->ID, 'phone', true ),
 					get_post_meta( $lead->ID, 'industry', true ),
+					get_post_meta( $lead->ID, 'contact_interest', true ),
+					get_post_meta( $lead->ID, 'contact_message', true ),
 					get_post_meta( $lead->ID, 'locations', true ),
 					get_post_meta( $lead->ID, 'devices', true ),
 					get_post_meta( $lead->ID, 'annual_savings', true ),
@@ -283,7 +325,7 @@ final class SMTP_CRM_Admin {
 
 		if ( SMTP_CRM_Content_Types::POST_TYPE === $screen->post_type ) {
 			$current_source = sanitize_key( $_GET['smtp_crm_source_filter'] ?? '' );
-			$sources        = array( 'fleet-calculator' => 'Fleet Calculator', 'manual' => 'Manual' );
+			$sources        = array( 'fleet-calculator' => 'Fleet Calculator', 'ai-assistant' => 'AI Assistant', 'website-contact' => 'Website Contact', 'manual' => 'Manual' );
 			echo '<select name="smtp_crm_source_filter"><option value="">All lead sources</option>';
 			foreach ( $sources as $source => $label ) {
 				echo '<option value="' . esc_attr( $source ) . '" ' . selected( $current_source, $source, false ) . '>' . esc_html( $label ) . '</option>';

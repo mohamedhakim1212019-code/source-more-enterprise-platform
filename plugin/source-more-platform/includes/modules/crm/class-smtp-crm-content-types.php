@@ -21,10 +21,10 @@ final class SMTP_CRM_Content_Types {
 			array(
 				'labels'          => array(
 					'name'          => 'Source More Leads',
-					'singular_name' => 'Fleet Lead',
+					'singular_name' => 'CRM Lead',
 					'menu_name'     => 'Source More CRM',
-					'add_new_item'  => 'Add Fleet Lead',
-					'edit_item'     => 'View Fleet Lead',
+					'add_new_item'  => 'Add CRM Lead',
+					'edit_item'     => 'View CRM Lead',
 				),
 				'public'          => false,
 				'show_ui'         => true,

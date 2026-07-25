@@ -88,13 +88,17 @@ class SMTP_Dashboard {
 				<a class="button button-primary" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=' . SMTP_Leads::POST_TYPE ) ); ?>">Add Fleet Lead</a>
 				<a class="button" href="<?php echo esc_url( admin_url( 'edit.php?post_type=' . SMTP_Leads::POST_TYPE ) ); ?>">View All Leads</a>
 				<a class="button" href="<?php echo esc_url( admin_url( 'edit.php?post_type=' . SMTP_CRM_Repository::QUOTE_POST_TYPE ) ); ?>">View Quote Requests</a>
+				<?php if ( SMTP_Modules::enabled( 'assistant' ) && current_user_can( 'manage_options' ) ) : ?>
+					<a class="button" href="<?php echo esc_url( admin_url( 'edit.php?post_type=' . SMTP_Assistant_Content_Types::CONVERSATION_POST_TYPE ) ); ?>">View AI Conversations</a>
+					<a class="button" href="<?php echo esc_url( admin_url( 'edit.php?post_type=' . SMTP_Assistant_Content_Types::KNOWLEDGE_POST_TYPE ) ); ?>">Manage AI Knowledge</a>
+				<?php endif; ?>
 				<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=smtp-settings' ) ); ?>">Platform Settings</a>
 			</div>
 			<h2>System status</h2>
 			<div class="smtp-health">
 				<div><strong>WordPress</strong><br><?php echo esc_html( get_bloginfo( 'version' ) ); ?></div>
 				<div><strong>PHP</strong><br><?php echo esc_html( PHP_VERSION ); ?></div>
-				<div><strong>AI Assistant</strong><br><?php echo $options['assistant_enabled'] ? ( $options['assistant_endpoint'] ? 'Enabled and connected' : 'Enabled — endpoint required' ) : 'Disabled'; ?></div>
+				<div><strong>AI Assistant</strong><br><?php echo $options['assistant_enabled'] ? ( $options['assistant_endpoint'] ? 'Enabled — external endpoint with built-in fallback' : 'Enabled — built-in knowledge' ) : 'Disabled'; ?></div>
 				<div><strong>Lead Email</strong><br><?php echo esc_html( $options['notification_email'] ); ?></div>
 			</div>
 		</div>

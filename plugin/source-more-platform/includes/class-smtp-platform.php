@@ -15,6 +15,7 @@ final class SMTP_Platform {
 	public static function activate(): void {
 		SMTP_Leads::register_post_type();
 		SMTP_Products_Module::register_content_types();
+		SMTP_Assistant_Module::register_content_types();
 		update_option( 'smtp_platform_db_version', SMTP_PLATFORM_DB_VERSION, false );
 
 		if ( null === get_option( 'smtp_platform_options', null ) ) {
@@ -25,6 +26,10 @@ final class SMTP_Platform {
 	}
 
 	public static function deactivate(): void {
+		if ( class_exists( 'SMTP_Assistant_Module' ) ) {
+			SMTP_Assistant_Module::deactivate();
+		}
+
 		flush_rewrite_rules();
 	}
 
@@ -109,10 +114,10 @@ final class SMTP_Platform {
 				'assistant',
 				'AI Assistant',
 				SMTP_PLATFORM_VERSION,
-				array( 'SMTP_Assistant', 'init' ),
+				array( 'SMTP_Assistant_Module', 'boot' ),
 				array( 'settings' ),
 				static fn(): bool => SMTP_Modules::enabled( 'assistant' ),
-				array( 'SMTP_Assistant', 'SMTP_Rate_Limiter', 'SMTP_Settings' )
+				array( 'SMTP_Assistant_Module', 'SMTP_Assistant', 'SMTP_Rate_Limiter', 'SMTP_Settings' )
 			)
 		);
 

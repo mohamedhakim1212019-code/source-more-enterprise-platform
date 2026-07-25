@@ -15,12 +15,14 @@ final class SMTP_CRM_Module {
 	private SMTP_CRM_Content_Types $content_types;
 	private SMTP_CRM_Repository $repository;
 	private SMTP_CRM_Admin $admin;
+	private SMTP_CRM_Contact_Capture $contact_capture;
 	private bool $booted = false;
 
 	private function __construct() {
 		$this->content_types = new SMTP_CRM_Content_Types();
 		$this->repository    = new SMTP_CRM_Repository();
-		$this->admin         = new SMTP_CRM_Admin( $this->repository );
+		$this->admin           = new SMTP_CRM_Admin( $this->repository );
+		$this->contact_capture = new SMTP_CRM_Contact_Capture( $this->repository );
 	}
 
 	public static function instance(): self {
@@ -40,6 +42,7 @@ final class SMTP_CRM_Module {
 
 		add_action( 'init', array( $module->content_types, 'register' ) );
 		$module->admin->register_hooks();
+		$module->contact_capture->register_hooks();
 		$module->booted = true;
 		do_action( 'smtp_crm_module_booted', $module );
 	}
@@ -62,6 +65,10 @@ final class SMTP_CRM_Module {
 
 	public function admin(): SMTP_CRM_Admin {
 		return $this->admin;
+	}
+
+	public function contact_capture(): SMTP_CRM_Contact_Capture {
+		return $this->contact_capture;
 	}
 
 	/**

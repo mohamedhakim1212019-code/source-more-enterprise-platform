@@ -1,5 +1,27 @@
 # Changelog
 
+## 3.6.1
+
+- Integrated the enterprise theme Request a Consultation form with Source More CRM.
+- Created Website Contact leads with status, source, consent, area of interest, message, and activity history.
+- Added internal notification and customer confirmation emails without discarding leads when mail delivery fails.
+- Added Website Contact to CRM source filters and exported contact inquiry fields in CSV.
+- Preserved the existing `smt_contact_submit` AJAX action, nonce, frontend form, and response format.
+- Kept the database version at 3.1.0 because this release uses WordPress post metadata and requires no schema migration.
+
+
+## 3.6.0
+
+- Refactored the AI Assistant into an independent SMEP module with dedicated content types, knowledge retrieval, endpoint adapter, conversation repository, REST delivery, frontend, administration, and CRM lead conversion services.
+- Added private AI Knowledge entries that administrators can manage from the Source More CRM menu using keywords, priority, enablement, and optional visitor actions.
+- Added token-protected conversation histories with capped transcripts, message source tracking, converted status, linked CRM leads, and configurable retention cleanup.
+- Added a visitor callback form inside the assistant that creates CRM leads with the `ai-assistant` source and sends administration and customer confirmation emails.
+- Added AI Conversations and AI Knowledge dashboard shortcuts and corrected assistant health status to reflect the built-in knowledge fallback.
+- Preserved `source-more/v1/assistant` and `source-more/v2/assistant`, and added versioned assistant lead-capture routes.
+- Retained `SMTP_Assistant` as a backward-compatible facade and kept all existing assistant settings and frontend IDs compatible.
+- Added isolated Assistant module, knowledge, conversation, and full-platform boot smoke tests.
+- Kept the database version at 3.1.0 because WordPress posts, post metadata, options, and cron are used without schema migration.
+
 ## 3.5.0
 
 - Refactored Fleet Savings Calculator into an independent Fleet Assessment module.

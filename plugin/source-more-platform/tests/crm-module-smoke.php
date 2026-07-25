@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.5.0' );
+define( 'SMTP_PLATFORM_VERSION', '3.6.1' );
 define( 'SMTP_PLATFORM_URL', 'https://example.test/wp-content/plugins/source-more-platform/' );
 
 $GLOBALS['smtp_crm_test_hooks']         = array();
@@ -32,6 +32,7 @@ $files = array(
 	'includes/modules/crm/class-smtp-crm-content-types.php',
 	'includes/modules/crm/class-smtp-crm-repository.php',
 	'includes/modules/crm/class-smtp-crm-admin.php',
+	'includes/modules/crm/class-smtp-crm-contact-capture.php',
 	'includes/modules/crm/class-smtp-crm-module.php',
 );
 foreach ( $files as $file ) {
@@ -49,7 +50,7 @@ SMTP_CRM_Module::boot();
 $first_hook_count = count( $GLOBALS['smtp_crm_test_hooks'] );
 SMTP_CRM_Module::boot();
 
-$assert( 12 === $first_hook_count, 'CRM module should register twelve controlled hooks after Fleet separation.' );
+$assert( 13 === $first_hook_count, 'CRM module should register thirteen controlled hooks including contact capture.' );
 $assert( $first_hook_count === count( $GLOBALS['smtp_crm_test_hooks'] ), 'Repeated CRM initialization must not duplicate hooks.' );
 $assert( SMTP_CRM_Module::is_booted(), 'CRM module should report a booted state.' );
 $assert( in_array( 'smtp_crm_module_booted', $GLOBALS['smtp_crm_test_actions_fired'], true ), 'CRM module boot action should fire.' );
@@ -60,6 +61,7 @@ $hook_contract = array_map(
 );
 $expected = array(
 	'action:add_meta_boxes',
+	'action:after_setup_theme',
 	'action:admin_menu',
 	'action:admin_post_smt_export_leads',
 	'action:init',

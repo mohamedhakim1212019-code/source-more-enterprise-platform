@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.5.0' );
+define( 'SMTP_PLATFORM_VERSION', '3.6.1' );
 define( 'SMTP_PLATFORM_URL', 'https://example.test/wp-content/plugins/source-more-platform/' );
 
 $GLOBALS['smtp_fleet_test_hooks']         = array();
@@ -32,6 +32,7 @@ $files = array(
 	'includes/modules/crm/class-smtp-crm-content-types.php',
 	'includes/modules/crm/class-smtp-crm-repository.php',
 	'includes/modules/crm/class-smtp-crm-admin.php',
+	'includes/modules/crm/class-smtp-crm-contact-capture.php',
 	'includes/modules/crm/class-smtp-crm-module.php',
 	'includes/modules/fleet/class-smtp-fleet-calculator.php',
 	'includes/modules/fleet/class-smtp-fleet-pdf.php',

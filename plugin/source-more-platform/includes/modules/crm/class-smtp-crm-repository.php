@@ -37,11 +37,15 @@ final class SMTP_CRM_Repository {
 	 * @return int|WP_Error
 	 */
 	public function create_lead( array $values ) {
+		$company = trim( (string) ( $values['company'] ?? '' ) );
+		$name    = trim( (string) ( $values['contact_name'] ?? '' ) );
+		$title   = '' !== $company ? $company . ' — ' . $name : $name . ' — Website Inquiry';
+
 		$post_id = wp_insert_post(
 			array(
 				'post_type'   => SMTP_CRM_Content_Types::POST_TYPE,
 				'post_status' => 'publish',
-				'post_title'  => $values['company'] . ' — ' . $values['contact_name'],
+				'post_title'  => $title,
 			),
 			true
 		);
