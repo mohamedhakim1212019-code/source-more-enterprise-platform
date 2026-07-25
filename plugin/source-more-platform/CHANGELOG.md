@@ -1,5 +1,23 @@
 # Changelog
 
+## 3.4.1
+- Split the CRM dashboard into complete Lead Pipeline and Quote Request Pipeline sections.
+- Added Total, New, Contacted, Qualified, Proposal, Won, and Lost metrics for both record types.
+- Made every dashboard metric clickable and linked it to the corresponding filtered admin list.
+- Treated legacy leads and quote requests without stored CRM status as New in dashboard counts and admin filters.
+- Kept the database version at 3.1.0 because this release requires no schema migration.
+
+## 3.4.0
+- Refactored Fleet Leads and CRM into an independent SMEP module composition root.
+- Split CRM content types, repository, administration, frontend, REST, and notification responsibilities into dedicated classes.
+- Retained `SMTP_Leads` and `SMTP_REST` as backward-compatible facades with the original post type, shortcode, routes, reports, and public methods.
+- Added controlled assignment, source tracking, status filtering, last-activity tracking, and a capped activity history for leads.
+- Integrated Product Quote Requests with CRM status, assignment, source, and activity management while preserving Product Center ownership of quote data.
+- Added Quote Request metrics and navigation to the CRM dashboard.
+- Expanded CSV exports with Source, Assigned To, and Last Activity fields.
+- Added CRM module smoke testing and updated the full platform boot test.
+- Kept the database version at 3.1.0 because Sprint 1.4 uses WordPress post metadata and requires no schema migration.
+
 ## 3.3.2
 - Fixed Product Quote notifications to use the configured `notification_email` setting.
 - Added a confirmation email to the customer who submits the quote request.

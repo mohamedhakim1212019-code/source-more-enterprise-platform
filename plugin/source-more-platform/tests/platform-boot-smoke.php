@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.3.0' );
+define( 'SMTP_PLATFORM_VERSION', '3.4.1' );
 define( 'SMTP_PLATFORM_DB_VERSION', '3.1.0' );
 define( 'SMTP_PLATFORM_FILE', __FILE__ );
 define( 'SMTP_PLATFORM_DIR', dirname( __DIR__ ) . '/' );
@@ -55,6 +55,13 @@ $runtime_files = array(
 	'includes/class-smtp-rate-limiter.php',
 	'includes/class-smtp-pdf.php',
 	'includes/class-smtp-dashboard.php',
+	'includes/modules/crm/class-smtp-crm-content-types.php',
+	'includes/modules/crm/class-smtp-crm-repository.php',
+	'includes/modules/crm/class-smtp-crm-notifications.php',
+	'includes/modules/crm/class-smtp-crm-admin.php',
+	'includes/modules/crm/class-smtp-crm-frontend.php',
+	'includes/modules/crm/class-smtp-crm-rest.php',
+	'includes/modules/crm/class-smtp-crm-module.php',
 	'includes/modules/products/class-smtp-products-content-types.php',
 	'includes/modules/products/class-smtp-products-repository.php',
 	'includes/modules/products/class-smtp-products-admin.php',

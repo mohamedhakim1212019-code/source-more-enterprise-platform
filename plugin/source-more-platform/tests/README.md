@@ -5,30 +5,28 @@ Run the isolated smoke tests from the plugin directory:
 ```bash
 php tests/module-registry-smoke.php
 php tests/products-module-smoke.php
+php tests/crm-module-smoke.php
+php tests/crm-repository-smoke.php
 php tests/platform-boot-smoke.php
+php tests/products-quote-hotfix-smoke.php
+php tests/products-email-hotfix-smoke.php
 ```
 
-The registry test verifies:
+The registry test verifies deterministic dependency boot, duplicate prevention, disabled-module handling, requirement failures, and idempotent initialization.
 
-- deterministic dependency boot order;
-- duplicate-registration prevention;
-- disabled-module skipping;
-- missing dependency and runtime requirement failures;
-- idempotent initialization.
+The Product Center test verifies the existing Product and Quote Request contracts, post types, taxonomies, shortcodes, REST routes, and backward-compatible facade.
 
-The Product Center test verifies:
+The CRM test verifies:
 
-- the legacy twelve-hook contract remains unchanged;
-- repeated Product module and facade initialization do not duplicate hooks;
-- the original post-type and taxonomy keys remain intact;
-- archive, rewrite, and admin-menu contracts remain compatible;
-- the two existing shortcode tags remain registered;
-- the `SMTP_Products` compatibility facade remains available.
+- controlled one-time CRM module boot;
+- the original `smt_fleet_lead` post-type key and admin placement;
+- the existing `smt_fleet_lead_form` shortcode;
+- both v1 and v2 lead REST endpoints;
+- assignment, status, source, activity, quote-request integration hooks;
+- backward compatibility through `SMTP_Leads` and `SMTP_REST`.
 
-The platform boot test verifies:
+The CRM repository test verifies lead and Quote Request status, assignment, source, last-activity, and activity-history metadata behavior.
 
-- all default v3.3.0 modules can be registered and booted together;
-- the refactored Product Center module composes successfully with the existing runtime;
-- repeated `SMTP_Platform::init()` calls do not duplicate hooks.
+The platform boot test verifies that all default v3.4.0 modules compose successfully and repeated initialization does not duplicate hooks.
 
 WordPress integration testing is still required in LocalWP because these tests intentionally isolate the core architecture.

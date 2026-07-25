@@ -73,10 +73,10 @@ final class SMTP_Platform {
 				'leads',
 				'CRM and Fleet Leads',
 				SMTP_PLATFORM_VERSION,
-				array( 'SMTP_Leads', 'init' ),
+				array( 'SMTP_CRM_Module', 'boot' ),
 				array( 'settings' ),
 				static fn(): bool => SMTP_Modules::enabled( 'crm' ) || SMTP_Modules::enabled( 'fleet' ),
-				array( 'SMTP_Leads', 'SMTP_Simple_PDF' )
+				array( 'SMTP_CRM_Module', 'SMTP_Leads', 'SMTP_Simple_PDF' )
 			)
 		);
 
@@ -98,9 +98,9 @@ final class SMTP_Platform {
 				'Platform REST API',
 				SMTP_PLATFORM_VERSION,
 				array( 'SMTP_REST', 'init' ),
-				array( 'settings' ),
-				null,
-				array( 'SMTP_REST', 'SMTP_Rate_Limiter', 'SMTP_Leads', 'SMTP_Settings' )
+				array( 'settings', 'leads' ),
+				static fn(): bool => SMTP_Modules::enabled( 'crm' ) || SMTP_Modules::enabled( 'fleet' ),
+				array( 'SMTP_REST', 'SMTP_CRM_REST', 'SMTP_Rate_Limiter', 'SMTP_Leads', 'SMTP_Settings' )
 			)
 		);
 
