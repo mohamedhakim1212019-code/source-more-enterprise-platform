@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.7.1' );
+define( 'SMTP_PLATFORM_VERSION', '3.8.0' );
 define( 'SMTP_PLATFORM_URL', 'https://example.test/wp-content/plugins/source-more-platform/' );
 
 $GLOBALS['smtp_assistant_test_hooks']         = array();
@@ -32,6 +32,7 @@ function register_post_type( string $post_type, array $args = array() ): void {
 
 $base = dirname( __DIR__ ) . '/';
 $files = array(
+	'includes/core/class-smtp-i18n.php',
 	'includes/modules/assistant/class-smtp-assistant-content-types.php',
 	'includes/modules/assistant/class-smtp-assistant-conversations.php',
 	'includes/modules/assistant/class-smtp-assistant-knowledge.php',
@@ -60,7 +61,7 @@ $first_hook_count = count( $GLOBALS['smtp_assistant_test_hooks'] );
 SMTP_Assistant_Module::boot();
 SMTP_Assistant::init();
 
-$assert( 13 === $first_hook_count, 'Assistant module should register thirteen controlled hooks.' );
+$assert( 14 === $first_hook_count, 'Assistant module should register fourteen controlled hooks.' );
 $assert( $first_hook_count === count( $GLOBALS['smtp_assistant_test_hooks'] ), 'Repeated Assistant initialization must not duplicate hooks.' );
 $assert( SMTP_Assistant_Module::is_booted(), 'Assistant module should report a booted state.' );
 $assert( in_array( 'smtp_assistant_module_booted', $GLOBALS['smtp_assistant_test_actions_fired'], true ), 'Assistant module boot action should fire.' );
@@ -81,6 +82,7 @@ $expected = array(
 	'action:wp_enqueue_scripts',
 	'action:wp_footer',
 	'filter:manage_smt_ai_conversation_posts_columns',
+	'filter:pll_get_post_types',
 	'filter:manage_smt_ai_knowledge_posts_columns',
 	'filter:post_row_actions',
 );

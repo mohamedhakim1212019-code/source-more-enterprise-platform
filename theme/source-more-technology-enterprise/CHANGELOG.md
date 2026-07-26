@@ -1,3 +1,12 @@
+## 7.7.0 — Bilingual Products & Platform UI
+- Added a complete English/Arabic Product Center archive experience.
+- Localized Product filters, types, availability, empty states, pagination, and calls to action.
+- Added bilingual product detail labels, pricing language, specifications, datasheet actions, and quotation section.
+- Added language-aware Product Center URLs for Polylang archive routes.
+- Connected Arabic Product pages to the bilingual Platform quote form and customer experience.
+- Refined Arabic Fleet Calculator company naming and retained all v7.6.3 navigation, Contact, and bilingual page fixes.
+- Updated theme assets and version metadata to 7.7.0.
+
 ## 7.6.3 — Arabic Contact Page
 - Added Contact Us / تواصل معنا to the bilingual page provisioning catalogue.
 - Creates or repairs the Arabic Contact translation and links it to the English Contact page in Polylang.

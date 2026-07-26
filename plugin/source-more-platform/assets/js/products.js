@@ -10,6 +10,7 @@
     const data = Object.fromEntries(new FormData(form).entries());
     data.product_id = Number(form.dataset.productId || 0);
     data.quantity = Number(data.quantity || 1);
+    data.language = form.dataset.language || SMTPProducts.language || document.documentElement.lang || 'en';
     data.source_url = window.location.href;
     status.textContent = SMTPProducts.sending;
     status.className = 'smtp-quote-status is-loading';
@@ -19,7 +20,7 @@
       const contentType = response.headers.get('content-type') || '';
       const payload = contentType.includes('application/json') ? await response.json() : {};
       if (!response.ok) throw new Error(payload.message || SMTPProducts.error);
-      status.textContent = SMTPProducts.success;
+      status.textContent = payload.message || SMTPProducts.success;
       status.className = 'smtp-quote-status is-success';
       form.reset();
     } catch(error) {

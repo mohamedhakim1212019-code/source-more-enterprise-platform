@@ -6,7 +6,7 @@
  */
 
 define( 'ABSPATH', __DIR__ . '/' );
-define( 'SMTP_PLATFORM_VERSION', '3.7.1' );
+define( 'SMTP_PLATFORM_VERSION', '3.8.0' );
 define( 'SMTP_PLATFORM_URL', 'https://example.test/wp-content/plugins/source-more-platform/' );
 
 $GLOBALS['smtp_product_test_hooks']         = array();
@@ -52,6 +52,7 @@ function register_rest_route( string $namespace, string $route, array $args = ar
 
 $base = dirname( __DIR__ ) . '/';
 $files = array(
+	'includes/core/class-smtp-i18n.php',
 	'includes/modules/products/class-smtp-products-content-types.php',
 	'includes/modules/products/class-smtp-products-repository.php',
 	'includes/modules/products/class-smtp-products-admin.php',
@@ -77,7 +78,7 @@ $first_hook_count = count( $GLOBALS['smtp_product_test_hooks'] );
 SMTP_Products_Module::boot();
 SMTP_Products::init();
 
-$assert( 12 === $first_hook_count, 'Product module should register the same twelve public hooks as the legacy class.' );
+$assert( 14 === $first_hook_count, 'Product module should register fourteen controlled hooks including Polylang support.' );
 $assert( $first_hook_count === count( $GLOBALS['smtp_product_test_hooks'] ), 'Repeated module or facade initialization must not duplicate hooks.' );
 $assert( SMTP_Products_Module::is_booted(), 'Product module should report a booted state.' );
 $assert( in_array( 'smtp_products_module_booted', $GLOBALS['smtp_product_test_actions_fired'], true ), 'Product module boot action should fire.' );
@@ -96,13 +97,15 @@ $expected_hook_contract = array(
 	'action:save_post_smt_quote_request',
 	'action:wp_enqueue_scripts',
 	'filter:manage_smt_product_posts_columns',
+	'filter:pll_get_post_types',
+	'filter:pll_get_taxonomies',
 	'filter:manage_smt_quote_request_posts_columns',
 	'shortcode:smtp_products',
 	'shortcode:source_more_quote_form',
 );
 sort( $hook_contract );
 sort( $expected_hook_contract );
-$assert( $expected_hook_contract === $hook_contract, 'The public Product Center hook contract must remain unchanged.' );
+$assert( $expected_hook_contract === $hook_contract, 'The Product Center hook contract must include bilingual content support.' );
 
 $shortcodes = array();
 foreach ( $GLOBALS['smtp_product_test_hooks'] as $hook ) {

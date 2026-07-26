@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Source More Platform
  * Description: Business platform for fleet assessments, lead management, branded reports, diagnostics, and the Source More AI assistant.
- * Version: 3.7.1
+ * Version: 3.8.0
  * Requires at least: 6.4
  * Requires PHP: 8.0
  * Author: Source More Technology
@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'SMTP_PLATFORM_VERSION', '3.7.1' );
+define( 'SMTP_PLATFORM_VERSION', '3.8.0' );
 define( 'SMTP_PLATFORM_DB_VERSION', '3.1.0' );
 define( 'SMTP_PLATFORM_FILE', __FILE__ );
 define( 'SMTP_PLATFORM_DIR', plugin_dir_path( __FILE__ ) );

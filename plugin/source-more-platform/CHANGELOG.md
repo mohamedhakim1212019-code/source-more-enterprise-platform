@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.8.0
+
+- Added a shared English/Arabic public-experience layer with Polylang-aware language and URL resolution.
+- Made Product Center products, categories, brands, archive labels, product detail labels, filters, quotation forms, validation messages, and customer emails bilingual.
+- Added Arabic Product Quote Request confirmations while preserving English administration notifications and CRM records.
+- Made Fleet Assessment lead capture, status messages, validation, customer confirmation emails, and language tracking bilingual.
+- Made the AI Assistant launcher, panel, quick actions, question form, callback form, built-in knowledge answers, validation, links, and customer emails bilingual.
+- Added Arabic deterministic AI knowledge for Managed Print Services, Fleet Savings, Cloud, Cybersecurity, Document Management, Products, and Contact requests.
+- Added Polylang support for Products, Product Categories, Brands, and AI Knowledge entries while keeping CRM records language-neutral.
+- Preserved the existing REST namespaces, post types, metadata, CRM integrations, PDF report access, and database version 3.1.0.
+
 ## 3.7.1
 
 - Added a branded, multi-page PDF export alongside the existing Analytics CSV export.

@@ -246,3 +246,5 @@ body.rtl .assessment-area-grid,
 body.rtl .download-resource-grid,
 body.rtl .insights-grid{direction:rtl}
 body.rtl .support-path-card>a{grid-template-columns:44px 1fr}
+/* v7.7 bilingual Product Center */
+body.rtl .product-filters,body.smt-lang-ar .product-filters{text-align:right}body.rtl .product-card-link i,body.smt-lang-ar .product-card-link i{margin-right:6px;margin-left:0}body.rtl .quote-section-grid,body.smt-lang-ar .quote-section-grid{text-align:right}body.rtl .product-summary,body.smt-lang-ar .product-summary{text-align:right}

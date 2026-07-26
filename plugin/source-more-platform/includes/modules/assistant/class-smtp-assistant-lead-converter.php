@@ -22,16 +22,17 @@ final class SMTP_Assistant_Lead_Converter {
 	 */
 	public function convert( array $data ): array|WP_Error {
 		$options = SMTP_Settings::get();
+		$lang    = SMTP_I18n::request_language( $data );
 		if ( empty( $options['assistant_lead_capture'] ) ) {
-			return new WP_Error( 'lead_capture_disabled', 'Assistant lead capture is disabled.', array( 'status' => 403 ) );
+			return new WP_Error( 'lead_capture_disabled', SMTP_I18n::text( 'Assistant lead capture is disabled.', 'تسجيل طلبات التواصل من المساعد غير مفعّل.', $lang ), array( 'status' => 403 ) );
 		}
 
 		if ( ! class_exists( 'SMTP_CRM_Module' ) || ! SMTP_Modules::enabled( 'crm' ) ) {
-			return new WP_Error( 'crm_unavailable', 'CRM lead capture is not available.', array( 'status' => 503 ) );
+			return new WP_Error( 'crm_unavailable', SMTP_I18n::text( 'CRM lead capture is not available.', 'نظام تسجيل العملاء المحتملين غير متاح حاليًا.', $lang ), array( 'status' => 503 ) );
 		}
 
 		if ( ! empty( $data['website'] ) ) {
-			return new WP_Error( 'spam', 'Invalid submission.', array( 'status' => 400 ) );
+			return new WP_Error( 'spam', SMTP_I18n::text( 'Invalid submission.', 'طلب غير صالح.', $lang ), array( 'status' => 400 ) );
 		}
 
 		$company = sanitize_text_field( $data['company'] ?? '' );
@@ -41,7 +42,7 @@ final class SMTP_Assistant_Lead_Converter {
 		$message = sanitize_textarea_field( $data['message'] ?? '' );
 
 		if ( '' === $company || '' === $name || ! is_email( $email ) || '' === $phone || empty( $data['consent'] ) ) {
-			return new WP_Error( 'validation', 'Please complete the required business and consent fields.', array( 'status' => 422 ) );
+			return new WP_Error( 'validation', SMTP_I18n::text( 'Please complete the required business and consent fields.', 'يرجى استكمال بيانات المؤسسة والموافقة المطلوبة.', $lang ), array( 'status' => 422 ) );
 		}
 
 		$conversation_id    = absint( $data['conversation_id'] ?? 0 );
@@ -75,6 +76,7 @@ final class SMTP_Assistant_Lead_Converter {
 			'three_year'                => 0,
 			'lead_status'               => 'new',
 			'lead_source'               => 'ai-assistant',
+			'language'                  => $lang,
 			'source_url'                => esc_url_raw( $data['source_url'] ?? wp_get_referer() ),
 			'consent_timestamp'         => current_time( 'mysql' ),
 			'last_activity'             => current_time( 'mysql' ),
@@ -112,7 +114,7 @@ final class SMTP_Assistant_Lead_Converter {
 		return array(
 			'success'         => true,
 			'lead_id'         => (int) $lead_id,
-			'message'         => 'Thank you. The Source More team will contact you shortly.',
+			'message'         => SMTP_I18n::text( 'Thank you. The Source More team will contact you shortly.', 'شكرًا لك. سيتواصل معك فريق سورس مور قريبًا.', $lang ),
 			'conversation_id'    => (int) $identity['conversation_id'],
 			'conversation_token' => (string) $identity['conversation_token'],
 		);
@@ -138,9 +140,15 @@ final class SMTP_Assistant_Lead_Converter {
 			SMTP_Logger::warning( 'Assistant admin notification failed', array( 'lead_id' => $lead_id, 'recipient' => $admin ) );
 		}
 
-		$customer_subject = 'We received your request — Source More Technology';
-		$customer_body    = "Dear {$values['contact_name']},\n\nThank you for contacting Source More Technology. Our team has received your request and will contact you shortly.\n\nSource More Technology\nOne Source, More Value.";
-		$customer_sent    = wp_mail( $values['email'], $customer_subject, $customer_body, $admin ? array( 'Reply-To: Source More Technology <' . $admin . '>' ) : array() );
+		$lang = SMTP_I18n::language( (string) ( $values['language'] ?? '' ) );
+		if ( 'ar' === $lang ) {
+			$customer_subject = 'تم استلام طلبك — سورس مور تكنولوجي';
+			$customer_body    = "الأستاذ/ة {$values['contact_name']}،\n\nشكرًا لتواصلك مع سورس مور تكنولوجي. تم استلام طلبك وسيتواصل معك فريقنا قريبًا.\n\nسورس مور تكنولوجي\nمصدر واحد. قيمة أكبر.";
+		} else {
+			$customer_subject = 'We received your request — Source More Technology';
+			$customer_body    = "Dear {$values['contact_name']},\n\nThank you for contacting Source More Technology. Our team has received your request and will contact you shortly.\n\nSource More Technology\nOne Source, More Value.";
+		}
+		$customer_sent = wp_mail( $values['email'], $customer_subject, $customer_body, $admin ? array( 'Reply-To: Source More Technology <' . $admin . '>' ) : array() );
 		if ( ! $customer_sent ) {
 			SMTP_Logger::warning( 'Assistant customer confirmation failed', array( 'lead_id' => $lead_id, 'recipient' => $values['email'] ) );
 		}

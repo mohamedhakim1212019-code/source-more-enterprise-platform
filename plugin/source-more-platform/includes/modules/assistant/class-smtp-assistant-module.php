@@ -48,6 +48,7 @@ final class SMTP_Assistant_Module {
 			return;
 		}
 
+		$module->content_types->register_polylang_support();
 		add_action( 'init', array( $module->content_types, 'register' ) );
 		add_action( 'init', array( $module, 'schedule_cleanup' ), 20 );
 		add_action( 'smtp_assistant_cleanup', array( $module->conversations, 'cleanup' ) );

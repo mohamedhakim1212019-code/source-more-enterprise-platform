@@ -1,10 +1,10 @@
-Source More Platform 3.7.1
+Source More Platform 3.8.0
 ==========================
 Requirements: WordPress 6.4+, PHP 8.0+.
 
 Installation
 1. Back up the WordPress database and the existing plugin directory.
-2. Upload and activate Source More Platform v3.7.1.
+2. Upload and activate Source More Platform v3.8.0.
 3. Open Source More CRM > Settings and verify the saved module controls.
 4. Open Source More CRM > Diagnostics and confirm there are no new boot errors.
 5. Save Settings > Permalinks only if routes or product archives do not resolve normally.
@@ -19,6 +19,13 @@ Platform architecture
 - Fleet Assessment is composed from independent calculation, frontend, REST, notification, report-access, and PDF components.
 - AI Assistant is composed from independent knowledge, endpoint, conversation, REST, frontend, administration, and CRM conversion components.
 - Reports & Analytics is composed from independent date-range, repository, aggregation, administration, and export components.
+
+Bilingual public experience
+- English and Arabic Product Center interface, filters, product pages, and quotation forms.
+- English and Arabic Fleet Assessment lead capture, validation, and customer email confirmations.
+- English and Arabic AI Assistant interface, built-in knowledge, navigation actions, callback capture, and customer email confirmations.
+- Polylang-aware URLs and translatable Products, Product Categories, Brands, and AI Knowledge entries.
+- Existing CRM administration remains language-neutral and operationally consistent.
 
 AI Assistant capabilities
 - Built-in deterministic knowledge with optional custom Knowledge entries.

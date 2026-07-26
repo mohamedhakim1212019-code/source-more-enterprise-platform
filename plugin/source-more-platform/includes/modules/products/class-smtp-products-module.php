@@ -45,6 +45,7 @@ final class SMTP_Products_Module {
 			return;
 		}
 
+		$module->content_types->register_polylang_support();
 		add_action( 'init', array( $module->content_types, 'register' ) );
 		$module->admin->register_hooks();
 		$module->frontend->register_hooks();

@@ -32,6 +32,9 @@ function smt_nav_parent_active_class($slugs): string {
 }
 
 function smt_products_url(): string {
+    if (function_exists('pll_home_url')) {
+        return user_trailingslashit(trailingslashit(pll_home_url(smt_lang())) . 'products');
+    }
     $archive = post_type_exists('smt_product') ? get_post_type_archive_link('smt_product') : '';
     return $archive ?: smt_page_url('products');
 }

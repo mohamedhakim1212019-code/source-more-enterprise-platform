@@ -13,6 +13,18 @@ final class SMTP_Assistant_Content_Types {
 	public const KNOWLEDGE_POST_TYPE    = 'smt_ai_knowledge';
 	public const CONVERSATION_POST_TYPE = 'smt_ai_conversation';
 
+
+	/** Make public knowledge entries translatable while keeping conversations language-neutral CRM records. */
+	public function register_polylang_support(): void {
+		add_filter( 'pll_get_post_types', array( $this, 'polylang_post_types' ), 10, 2 );
+	}
+
+	/** @param array<string,string> $types */
+	public function polylang_post_types( array $types, bool $is_settings ): array {
+		$types[ self::KNOWLEDGE_POST_TYPE ] = self::KNOWLEDGE_POST_TYPE;
+		return $types;
+	}
+
 	/**
 	 * Register private Knowledge and Conversation records without schema changes.
 	 */
