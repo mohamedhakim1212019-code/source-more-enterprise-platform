@@ -1,4 +1,67 @@
+## 7.6.3 — Arabic Contact Page
+- Added Contact Us / تواصل معنا to the bilingual page provisioning catalogue.
+- Creates or repairs the Arabic Contact translation and links it to the English Contact page in Polylang.
+- Assigns the dedicated Contact page template to both languages.
+- Reuses an existing unlinked Arabic Contact page when present to avoid duplicates.
+- Ensures the Arabic header Contact button and all consultation CTAs open the Arabic Contact page directly.
+
 # Changelog
+
+## 7.6.2
+- Fixed Arabic Mega Menu links for hierarchical IT Consulting and Digital Transformation pages.
+- Added a robust language-aware page resolver that locates pages by slug regardless of parent path.
+- Prioritized the English source page that has a valid Polylang translation relationship.
+- Kept fallback links inside the active language.
+- Prevented the bilingual repair utility from creating duplicate pages after pages are assigned to a parent.
+- Updated active-menu detection for hierarchical bilingual pages.
+
+## 7.6.1
+- Added complete bilingual IT Consulting and Digital Transformation solution pages.
+- Changed mega-menu links from inactive anchors to the new real pages.
+- Extended Bilingual Pages setup to create, translate, link, and parent the two pages.
+- Removed the small eyebrow line from all internal page heroes for a cleaner visual hierarchy.
+- Ensured textual company-name references use “سورس مور تكنولوجي” on Arabic pages while preserving the English logo lockup.
+- Updated theme asset cache versions.
+
+## 7.6.0
+- Added complete bilingual Industries and Resources experiences.
+- Added eight sector-specific English and Arabic landing pages.
+- Added Company Profile, Technology Assessment, FAQs & Support, Insights, and Downloads pages.
+- Connected the Resources Mega Menu to real bilingual pages.
+- Added non-destructive Appearance > Bilingual Pages setup and repair utility.
+- Added responsive and RTL visual systems for the new pages.
+- Kept the Platform plugin and existing content unchanged.
+
+## 7.5.1
+- Stabilized desktop mega-menu hover interaction.
+- Added a guarded pointer-leave delay and transparent hover bridge.
+- Removed the need to click submenu arrows on desktop.
+- Preserved mobile accordion and keyboard behavior.
+
+
+## 7.5.0
+- Added bilingual mega navigation for Solutions, Industries, and Resources.
+- Added responsive mobile accordion behavior through the existing accessible submenu controls.
+- Made corporate About, Solutions, and solution-detail templates visually authoritative while preserving stored editor content.
+- Updated Arabic corporate naming to سورس مور تكنولوجي in key theme experiences.
+- Retained all v7.4.1 footer, process, RTL, and sticky-header fixes.
+
+## 7.4.1 — Arabic Footer & Solution Process Polish
+- Fixed international phone-number direction in RTL footer layouts.
+- Kept the footer logo lockup visually consistent in English and Arabic.
+- Added the Arabic company name “سورس مور تكنولوجي” to the Arabic footer and copyright line.
+- Improved Arabic WhatsApp greeting copy.
+- Restyled solution delivery steps as high-contrast white cards on a soft background.
+- Added dark navy headings, readable secondary text, borders, shadows, and hover feedback.
+
+## 7.4.0 — Bilingual About & Solutions
+- Added complete English and Arabic marketing copy for the About Us page.
+- Added complete English and Arabic copy for the Solutions hub.
+- Added bilingual content for all eight individual solution pages.
+- Localized headings, CTAs, challenges, capabilities, outcomes, delivery stages, and sector labels.
+- Added Arabic RTL typography refinements for About and Solutions pages.
+- Preserved optional Gutenberg override: editor content replaces the built-in page template when provided.
+- Kept all stable URLs, Polylang links, homepage manager, sticky header, logo behavior, and SMEP integration unchanged.
 
 ## 7.3.5
 - Added a dedicated full-width bilingual Homepage Content Manager under Appearance.

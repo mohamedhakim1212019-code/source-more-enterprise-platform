@@ -28,6 +28,25 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.body.classList.add('nav-open');
  };
 
+ const hoverCloseTimers=new WeakMap();
+ const cancelHoverClose=item=>{
+  const timer=hoverCloseTimers.get(item);
+  if(timer)clearTimeout(timer);
+  hoverCloseTimers.delete(item);
+ };
+ const setSubmenuState=(item,button,isOpen)=>{
+  cancelHoverClose(item);
+  item.classList.toggle('is-submenu-open',isOpen);
+  button?.setAttribute('aria-expanded',String(isOpen));
+ };
+ const scheduleHoverClose=(item,button)=>{
+  cancelHoverClose(item);
+  hoverCloseTimers.set(item,setTimeout(()=>{
+   setSubmenuState(item,button,false);
+   hoverCloseTimers.delete(item);
+  },320));
+ };
+
  document.querySelectorAll('.enterprise-menu .menu-item-has-children').forEach((item,index)=>{
   const link=item.querySelector(':scope > a');
   const submenu=item.querySelector(':scope > .sub-menu');
@@ -40,13 +59,39 @@ document.addEventListener('DOMContentLoaded',()=>{
   button.setAttribute('aria-controls',submenu.id);
   button.setAttribute('aria-label',`${smtTheme?.messages?.toggleSubmenu||'Toggle submenu'}: ${link.textContent.trim()}`);
   item.insertBefore(button,submenu);
+
+  /* Mobile/tablet: explicit accordion button. */
   button.addEventListener('click',event=>{
    event.preventDefault();
    event.stopPropagation();
+   if(innerWidth>mobileBreakpoint)return;
    const willOpen=!item.classList.contains('is-submenu-open');
-   if(innerWidth>mobileBreakpoint)closeSubmenus(item);
-   item.classList.toggle('is-submenu-open',willOpen);
-   button.setAttribute('aria-expanded',String(willOpen));
+   closeSubmenus(willOpen?item:null);
+   setSubmenuState(item,button,willOpen);
+  });
+
+  /* Desktop: hover opens, then a short close delay protects pointer travel. */
+  item.addEventListener('pointerenter',()=>{
+   if(innerWidth<=mobileBreakpoint)return;
+   closeSubmenus(item);
+   setSubmenuState(item,button,true);
+  });
+  item.addEventListener('pointerleave',()=>{
+   if(innerWidth<=mobileBreakpoint)return;
+   scheduleHoverClose(item,button);
+  });
+  submenu.addEventListener('pointerenter',()=>{
+   if(innerWidth<=mobileBreakpoint)return;
+   setSubmenuState(item,button,true);
+  });
+  submenu.addEventListener('pointerleave',()=>{
+   if(innerWidth<=mobileBreakpoint)return;
+   scheduleHoverClose(item,button);
+  });
+  link.addEventListener('focus',()=>{
+   if(innerWidth<=mobileBreakpoint)return;
+   closeSubmenus(item);
+   setSubmenuState(item,button,true);
   });
  });
 

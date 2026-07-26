@@ -25,10 +25,7 @@
    <span></span><span></span><span></span>
   </button>
   <nav class="primary-nav" id="primary-navigation" aria-label="<?php echo esc_attr__('Primary navigation','source-more-technology'); ?>">
-   <?php wp_nav_menu([
-     'theme_location'=>'primary','container'=>false,'menu_class'=>'enterprise-menu','menu_id'=>'primary-menu',
-     'fallback_cb'=>'smt_primary_menu_fallback','depth'=>3,
-   ]); ?>
+   <?php if (function_exists('smt_render_mega_navigation')) { smt_render_mega_navigation(); } else { smt_primary_menu_fallback(); } ?>
    <div class="header-tools"><?php if (function_exists('smt_language_switcher')) smt_language_switcher(); ?><a class="header-cta" href="<?php echo esc_url(smt_page_url('contact')); ?>"><?php echo esc_html(smt_t('Contact Us','تواصل معنا')); ?></a></div>
   </nav>
   <button class="nav-backdrop" type="button" aria-label="<?php echo esc_attr__('Close navigation','source-more-technology'); ?>" tabindex="-1"></button>

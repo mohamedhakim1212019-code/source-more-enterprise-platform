@@ -120,3 +120,129 @@ body.rtl .showcase-hero h1{
 @media(max-width:700px){
   body.rtl .showcase-hero h1{font-size:clamp(29px,8vw,38px);line-height:1.2}
 }
+
+/* v7.4.0 — bilingual About and Solutions page polish. */
+body.rtl .about-hero-copy,
+body.rtl .section-copy,
+body.rtl .solutions-hub-page .ui-page-hero,
+body.rtl .solution-detail-page .ui-page-hero,
+body.rtl .solution-consult-card,
+body.rtl .vendor-comparison,
+body.rtl .solution-premium-card,
+body.rtl .solution-check-card,
+body.rtl .solution-feature-card{
+  text-align:right;
+}
+body.rtl .about-hero h1,
+body.rtl .solutions-hub-hero h1,
+body.rtl .solution-detail-hero h1{
+  letter-spacing:0;
+  line-height:1.18;
+  text-wrap:balance;
+}
+body.rtl .about-hero h1{font-size:clamp(38px,4.4vw,64px)}
+body.rtl .solutions-hub-hero h1,
+body.rtl .solution-detail-hero h1{font-size:clamp(38px,4.6vw,66px)}
+body.rtl .solution-premium-card ul,
+body.rtl .comparison-column ul{
+  padding-right:0;
+  padding-left:0;
+}
+body.rtl .solution-premium-card li,
+body.rtl .solution-check-card,
+body.rtl .solution-benefit-grid article,
+body.rtl .outcomes-grid span{
+  flex-direction:row;
+}
+body.rtl .solution-premium-card a i,
+body.rtl .solution-consult-card a i{
+  transform:rotate(180deg);
+}
+body.rtl .approach-step:not(:last-child)::after{
+  transform:rotate(180deg);
+}
+@media(max-width:700px){
+  body.rtl .about-hero h1,
+  body.rtl .solutions-hub-hero h1,
+  body.rtl .solution-detail-hero h1{font-size:clamp(30px,8vw,42px);line-height:1.24}
+}
+
+
+/* v7.4.1 — Arabic footer identity, contact direction, and process-card contrast. */
+html[dir="rtl"] .footer-brand,
+body.rtl .footer-brand{
+  direction:ltr;
+  flex-direction:row;
+  justify-content:flex-start;
+  text-align:left;
+}
+html[dir="rtl"] .footer-brand-copy,
+body.rtl .footer-brand-copy{
+  direction:rtl;
+  text-align:right;
+  align-items:flex-start;
+}
+html[dir="rtl"] .footer-phone,
+body.rtl .footer-phone,
+html[dir="rtl"] .footer-email,
+body.rtl .footer-email{
+  direction:ltr!important;
+  unicode-bidi:isolate;
+  text-align:right;
+}
+body.rtl .solution-process.ui-process-grid li{text-align:right}
+body.rtl .solution-process.ui-process-grid h3,
+body.rtl .solution-process.ui-process-grid p{color:inherit}
+body.rtl .solution-process.ui-process-grid h3{color:var(--navy)}
+body.rtl .solution-process.ui-process-grid p{color:#526277}
+
+/* v7.5.0 — RTL mega navigation while preserving the English brand lockup. */
+body.rtl .smt-mega-menu{text-align:right}
+body.rtl .smt-mega-menu .mega-grid,
+body.rtl .smt-mega-menu .industry-menu-grid,
+body.rtl .smt-mega-menu .mega-resources{direction:rtl}
+body.rtl .smt-mega-menu section>a:hover,
+body.rtl .smt-mega-menu section>a:focus{transform:translateX(-3px)}
+body.rtl .smt-mega-menu .industry-menu-grid a,
+body.rtl .smt-mega-menu .mega-resources>a{direction:rtl;text-align:right}
+body.rtl .smt-mega-menu .mega-feature{align-items:flex-start;text-align:right}
+body.rtl .smt-mega-navigation>li.menu-item-has-children>a{padding-left:31px;padding-right:11px}
+body.rtl .smt-mega-navigation>li.menu-item-has-children>.submenu-toggle{left:1px;right:auto;margin-left:0;margin-right:-7px}
+@media(max-width:1100px){
+  body.rtl .smt-mega-navigation .menu-item-has-children>a{padding-left:8px;padding-right:2px}
+  body.rtl .smt-mega-navigation .menu-item-has-children>.submenu-toggle{position:static;margin:0}
+  body.rtl .smt-mega-menu{padding-right:10px!important;padding-left:0!important}
+}
+
+/* v7.6.0 — RTL Industries & Resources. */
+body.rtl .industries-hub-page,
+body.rtl .industry-sector-page,
+body.rtl .resources-hub-page,
+body.rtl .resource-detail-page{text-align:right}
+body.rtl .industries-hub-hero:after,
+body.rtl .resources-hub-hero:after,
+body.rtl .industry-sector-hero:after,
+body.rtl .resource-detail-hero:after{right:auto;left:-190px}
+body.rtl .industry-hub-card>a i,
+body.rtl .resource-hub-card>a i,
+body.rtl .download-resource-grid article>a .fa-arrow-right,
+body.rtl .insight-card-link .fa-arrow-right{transform:rotate(180deg)}
+body.rtl .industry-hub-card>a:hover i,
+body.rtl .resource-hub-card>a:hover i{transform:rotate(180deg) translateX(4px)}
+body.rtl .industry-sector-symbol,
+body.rtl .resource-detail-symbol,
+body.rtl .resources-hero-panel{align-items:flex-start;text-align:right}
+body.rtl .industry-priority-panel li,
+body.rtl .profile-value-list span,
+body.rtl .assessment-output-list li{flex-direction:row}
+body.rtl .industry-hub-grid,
+body.rtl .industry-solution-grid,
+body.rtl .industry-value-grid,
+body.rtl .industry-result-grid,
+body.rtl .industry-delivery-flow,
+body.rtl .resource-hub-grid,
+body.rtl .profile-topic-grid,
+body.rtl .assessment-area-grid,
+body.rtl .download-resource-grid,
+body.rtl .insights-grid{direction:rtl}
+body.rtl .support-path-card>a{grid-template-columns:44px 1fr}

@@ -582,7 +582,7 @@ add_action('admin_post_smt_save_homepage_manager', function(): void {
 
 add_action('admin_enqueue_scripts', function(string $hook): void {
     if ($hook !== 'appearance_page_smt-homepage-content') return;
-    wp_register_style('smt-homepage-manager-inline', false, [], '7.3.5');
+    wp_register_style('smt-homepage-manager-inline', false, [], '7.4.1');
     wp_enqueue_style('smt-homepage-manager-inline');
     $css = <<<'CSS'
 .smt-homepage-manager{max-width:1180px}

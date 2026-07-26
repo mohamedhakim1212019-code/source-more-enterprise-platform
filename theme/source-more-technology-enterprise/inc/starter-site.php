@@ -31,7 +31,11 @@ function smt_starter_pages() {
         'retail' => ['title' => 'Retail', 'template' => 'page-industry.php'],
         'logistics' => ['title' => 'Logistics & Distribution', 'template' => 'page-industry.php'],
         'oil-gas' => ['title' => 'Oil & Gas', 'template' => 'page-industry.php'],
-        'insights' => ['title' => 'Insights', 'template' => 'default'],
+        'insights' => ['title' => 'Insights & Articles', 'template' => 'page-insights.php'],
+        'company-profile' => ['title' => 'Company Profile', 'template' => 'page-company-profile.php'],
+        'technology-assessment' => ['title' => 'Technology Assessment', 'template' => 'page-technology-assessment.php'],
+        'faq-support' => ['title' => 'FAQs & Support', 'template' => 'page-faq-support.php'],
+        'downloads' => ['title' => 'Downloads Center', 'template' => 'page-downloads.php'],
 
         'fleet-savings-calculator' => ['title' => 'Fleet Savings Calculator', 'template' => 'page-fleet-savings-calculator.php'],
         'contact' => ['title' => 'Contact', 'template' => 'page-contact.php'],
@@ -69,8 +73,9 @@ function smt_install_starter_site() {
         update_option('page_on_front', $page_ids['home']);
     }
 
-    if (!empty($page_ids['insights'])) { update_option('page_for_posts', $page_ids['insights']); }
-    update_option('smt_theme_content_version', '6.2.0');
+    // Insights uses the bilingual theme template so it can render language-aware articles.
+    update_option('page_for_posts', 0);
+    update_option('smt_theme_content_version', '7.6.0');
     flush_rewrite_rules(false);
 }
 add_action('after_switch_theme', 'smt_install_starter_site');
@@ -78,7 +83,7 @@ add_action('after_switch_theme', 'smt_install_starter_site');
 // Also runs once after an in-place ZIP replacement of an already active theme.
 add_action('admin_init', function () {
     if (!current_user_can('manage_options')) return;
-    if (get_option('smt_theme_content_version') !== '6.0.0') {
+    if (get_option('smt_theme_content_version') !== '7.6.0') {
         smt_install_starter_site();
     }
 });
@@ -108,6 +113,11 @@ add_filter('template_include', function ($template) {
         'annual-maintenance' => 'page-annual-maintenance.php',
         'industries' => 'page-industries.php',
         'resources' => 'page-resources.php',
+        'company-profile' => 'page-company-profile.php',
+        'technology-assessment' => 'page-technology-assessment.php',
+        'faq-support' => 'page-faq-support.php',
+        'insights' => 'page-insights.php',
+        'downloads' => 'page-downloads.php',
         'banking' => 'page-industry.php', 'government' => 'page-industry.php', 'manufacturing' => 'page-industry.php', 'healthcare' => 'page-industry.php', 'education' => 'page-industry.php', 'retail' => 'page-industry.php', 'logistics' => 'page-industry.php', 'oil-gas' => 'page-industry.php',
         'fleet-savings-calculator' => 'page-fleet-savings-calculator.php',
         'contact' => 'page-contact.php',
