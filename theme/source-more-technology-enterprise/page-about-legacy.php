@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: About Source More Technology
+ * Template Name: About Source More
  * Template Post Type: page
  */
 if (!defined('ABSPATH')) exit;

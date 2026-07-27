@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme — v7.2.0
+Source More Enterprise Theme — v7.2.0
 =================================================
 
 Sprint 1.1: Header & Navigation Stabilization

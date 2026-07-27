@@ -4,7 +4,7 @@
 
 | English | العربية | Page template |
 |---|---|---|
-| About Us | من نحن | About Source More Technology |
+| About Us | من نحن | About Source More |
 | Solutions | الحلول | Our Services |
 | Managed Print Services | خدمات الطباعة المُدارة | Managed Print Services |
 | Enterprise Printing | حلول الطباعة المؤسسية | Enterprise Printing |

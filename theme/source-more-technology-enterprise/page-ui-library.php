@@ -2,7 +2,7 @@
 /**
  * Template Name: UI Component Library
  *
- * Internal preview page for the Source More Technology design system.
+ * Internal preview page for the Source More design system.
  *
  * @package Source_More_Technology
  */
@@ -13,7 +13,7 @@ get_header();
 		<div class="container">
 			<span class="eyebrow"><?php esc_html_e( 'Design System v3.2', 'source-more-technology' ); ?></span>
 			<h1><?php esc_html_e( 'Enterprise UI Component Library', 'source-more-technology' ); ?></h1>
-			<p><?php esc_html_e( 'Reusable, responsive and bilingual-ready interface components for every Source More Technology page.', 'source-more-technology' ); ?></p>
+			<p><?php esc_html_e( 'Reusable, responsive and bilingual-ready interface components for every Source More page.', 'source-more-technology' ); ?></p>
 		</div>
 	</section>
 

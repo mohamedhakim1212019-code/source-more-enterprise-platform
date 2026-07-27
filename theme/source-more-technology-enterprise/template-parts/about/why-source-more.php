@@ -3,7 +3,7 @@
   <div class="container">
     <div class="section-heading centered reveal">
       <span class="section-kicker light"><?php echo esc_html(smt_t('Our Brand Philosophy','فلسفة علامتنا')); ?></span>
-      <h2 id="brand-story-title"><?php echo esc_html(smt_t('Why “Source More Technology”?','لماذا سورس مور تكنولوجي؟')); ?></h2>
+      <h2 id="brand-story-title"><?php echo esc_html(smt_t('Why “Source More”?','لماذا سورس مور؟')); ?></h2>
       <p><?php echo esc_html(smt_t(
         'Our name reflects a simpler, more accountable way to acquire, implement, manage, and improve business technology through one relationship.',
         'اسمنا يعكس طريقة أبسط وأكثر مسؤولية لإدارة احتياجات التكنولوجيا: مصدر واحد يمنح مؤسستك حلولًا أكثر تكاملًا وقيمة أكبر في كل مرحلة.'

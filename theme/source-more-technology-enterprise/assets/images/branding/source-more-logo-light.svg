@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 300" role="img" aria-labelledby="title desc">
+<title id="title">Source More</title><desc id="desc">Source More — One Source. More Value.</desc>
+<defs><linearGradient id="navy" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#061b35"/><stop offset="1" stop-color="#0b3b69"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0bd35"/><stop offset="1" stop-color="#c88c08"/></linearGradient></defs>
+<rect width="1080" height="300" rx="28" fill="#ffffff"/>
+<g transform="translate(40 40) scale(.43)"><rect x="18" y="18" width="476" height="476" rx="112" fill="url(#navy)" stroke="url(#gold)" stroke-width="14"/><path fill="#fff" d="M211 131c-22-18-48-27-76-27-53 0-91 30-91 75 0 51 43 65 82 77 30 9 51 17 51 38 0 20-18 32-45 32-31 0-60-13-84-37l-31 42c30 31 69 48 116 48 59 0 99-31 99-80 0-53-44-68-85-81-29-9-48-16-48-35 0-18 17-29 40-29 25 0 47 9 66 24z"/><path fill="url(#gold)" d="M213 351V176h45l62 90 61-90h45v175h-53V258l-53 75-54-75v93z"/><path fill="url(#gold)" d="M371 130h57v57h-18v-27h-39z"/></g>
+<line x1="290" y1="50" x2="290" y2="250" stroke="#d9a21b" stroke-width="4"/>
+<text x="335" y="145" font-family="Manrope,Arial,sans-serif" font-size="84" font-weight="800" fill="#071d38">Source</text><text x="650" y="145" font-family="Manrope,Arial,sans-serif" font-size="84" font-weight="800" fill="#d9a21b">More</text>
+<line x1="338" y1="201" x2="405" y2="201" stroke="#d9a21b" stroke-width="5"/><text x="430" y="215" font-family="Manrope,Arial,sans-serif" font-size="34" font-weight="600" fill="#071d38">One Source. More Value.</text><line x1="850" y1="201" x2="917" y2="201" stroke="#d9a21b" stroke-width="5"/>
+</svg>

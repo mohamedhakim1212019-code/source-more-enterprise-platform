@@ -1,7 +1,7 @@
 <?php if (!defined('ABSPATH')) exit; ?>
 <section class="section section-choose" aria-labelledby="choose-title">
   <div class="container">
-    <div class="section-heading reveal"><div><span class="section-kicker light"><?php echo esc_html(smt_t('Our Difference','ما يميزنا')); ?></span><h2 id="choose-title"><?php echo esc_html(smt_t('Why organizations choose Source More Technology','لماذا تختار المؤسسات سورس مور تكنولوجي؟')); ?></h2></div><p><?php echo esc_html(smt_t('Commercial understanding, technical expertise, and accountable local support in one partnership.','فهم تجاري، وخبرة تقنية، ودعم محلي مسؤول في شراكة واحدة.')); ?></p></div>
+    <div class="section-heading reveal"><div><span class="section-kicker light"><?php echo esc_html(smt_t('Our Difference','ما يميزنا')); ?></span><h2 id="choose-title"><?php echo esc_html(smt_t('Why organizations choose Source More','لماذا تختار المؤسسات سورس مور؟')); ?></h2></div><p><?php echo esc_html(smt_t('Commercial understanding, technical expertise, and accountable local support in one partnership.','فهم تجاري، وخبرة تقنية، ودعم محلي مسؤول في شراكة واحدة.')); ?></p></div>
     <div class="choose-grid">
       <?php
       $items = [

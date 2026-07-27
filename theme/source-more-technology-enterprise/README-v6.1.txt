@@ -1,4 +1,4 @@
-Source More Technology Theme v6.1.0
+Source More Theme v6.1.0
 
 Integration release for Source More Platform v2.1.0.
 
@@ -10,4 +10,4 @@ Key changes:
 
 Recommended installation order:
 1. Source More Platform v2.1.0
-2. Source More Technology Theme v6.1.0
+2. Source More Theme v6.1.0

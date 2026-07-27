@@ -30,12 +30,12 @@ function smt_sanitize_settings($input){
 }
 function smt_settings_page(){
  if(!current_user_can('manage_options'))return; $o=wp_parse_args((array)get_option('smt_business_settings',[]),smt_settings_defaults()); ?>
- <div class="wrap"><h1>Source More Technology Settings</h1><p>Update business details used throughout the theme.</p>
+ <div class="wrap"><h1>Source More Settings</h1><p>Update business details used throughout the theme.</p>
  <form method="post" action="options.php"><?php settings_fields('smt_settings_group'); ?>
  <table class="form-table" role="presentation">
  <?php $fields=['phone'=>'Phone','email'=>'Email','whatsapp'=>'WhatsApp number (country code, digits only)','address_en'=>'Address — English','address_ar'=>'Address — Arabic','linkedin'=>'LinkedIn URL','facebook'=>'Facebook URL','profile_url'=>'Company Profile PDF URL','lead_email'=>'Lead notification email','privacy_url'=>'Privacy Policy URL']; foreach($fields as $key=>$label): ?>
  <tr><th scope="row"><label for="smt_<?php echo esc_attr($key); ?>"><?php echo esc_html($label); ?></label></th><td><input class="regular-text" id="smt_<?php echo esc_attr($key); ?>" name="smt_business_settings[<?php echo esc_attr($key); ?>]" value="<?php echo esc_attr($o[$key]); ?>"></td></tr>
  <?php endforeach; ?>
- <tr><th scope="row"><label for="smt_homepage_mode">Homepage Layout</label></th><td><select id="smt_homepage_mode" name="smt_business_settings[homepage_mode]"><option value="showcase" <?php selected($o['homepage_mode'],'showcase'); ?>>Showcase Homepage v7.3</option><option value="editor" <?php selected($o['homepage_mode'],'editor'); ?>>WordPress Editor Content</option></select><p class="description">Switch without deleting the existing homepage content.</p></td></tr>
+ <tr><th scope="row"><label for="smt_homepage_mode">Homepage Layout</label></th><td><select id="smt_homepage_mode" name="smt_business_settings[homepage_mode]"><option value="showcase" <?php selected($o['homepage_mode'],'showcase'); ?>>Showcase Homepage</option><option value="editor" <?php selected($o['homepage_mode'],'editor'); ?>>WordPress Editor Content</option></select><p class="description">Switch without deleting the existing homepage content.</p></td></tr>
  </table><?php submit_button(); ?></form></div><?php
 }

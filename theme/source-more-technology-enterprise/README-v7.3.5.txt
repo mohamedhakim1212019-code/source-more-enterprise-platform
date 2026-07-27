@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.3.5
+Source More Enterprise Theme v7.3.5
 
 Homepage editing fix
 --------------------

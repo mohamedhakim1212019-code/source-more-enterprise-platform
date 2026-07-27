@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.7.0
+Source More Enterprise Theme v7.7.0
 ================================================
 Bilingual Products & Platform UI
 

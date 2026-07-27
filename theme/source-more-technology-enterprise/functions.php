@@ -4,6 +4,7 @@ require_once get_template_directory() . '/inc/components.php';
 require_once get_template_directory() . '/inc/i18n.php';
 require_once get_template_directory() . '/inc/mega-navigation.php';
 require_once get_template_directory() . '/inc/homepage-content.php';
+require_once get_template_directory() . '/inc/visual-media.php';
 require_once get_template_directory() . '/inc/theme-settings.php';
 require_once get_template_directory() . '/inc/solution-pages.php';
 require_once get_template_directory() . '/inc/industry-resources.php';
@@ -22,11 +23,19 @@ add_action('after_setup_theme', function(){
 add_action('wp_enqueue_scripts', function(){
   wp_enqueue_style('smt-fonts','https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap',[],null);
   wp_enqueue_style('smt-icons','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css',[],'6.7.2');
-  wp_enqueue_style('smt-main',get_template_directory_uri().'/assets/css/main.css',[],'7.7.0');
-  if (is_rtl() || (function_exists('smt_is_ar') && smt_is_ar())) wp_enqueue_style('smt-rtl',get_template_directory_uri().'/rtl.css',['smt-main'],'7.7.0');
-  wp_enqueue_script('smt-main',get_template_directory_uri().'/assets/js/main.js',[],'7.7.0',true);
+  wp_enqueue_style('smt-main',get_template_directory_uri().'/assets/css/main.css',[],'7.9.4');
+  if (is_rtl() || (function_exists('smt_is_ar') && smt_is_ar())) wp_enqueue_style('smt-rtl',get_template_directory_uri().'/rtl.css',['smt-main'],'7.9.4');
+  wp_enqueue_script('smt-main',get_template_directory_uri().'/assets/js/main.js',[],'7.9.4',true);
 });
 add_filter('body_class',function($classes){ $classes[]='smt-lang-'.sanitize_html_class(smt_lang()); return $classes; });
+
+add_filter('wp_resource_hints', function($urls, $relation_type){
+  if ($relation_type === 'preconnect') {
+    $urls[] = ['href'=>'https://fonts.googleapis.com','crossorigin'=>'anonymous'];
+    $urls[] = ['href'=>'https://fonts.gstatic.com','crossorigin'=>'anonymous'];
+  }
+  return $urls;
+},10,2);
 
 
 /** v6.0 production foundations. */
@@ -61,6 +70,14 @@ add_action('wp_enqueue_scripts', function(){
 add_action('wp_head', function(){
     if (is_singular() && pings_open()) printf('<link rel="pingback" href="%s">', esc_url(get_bloginfo('pingback_url')));
 },1);
+
+/** Use the signed-off SM monogram for the browser tab and saved shortcuts. */
+add_action('wp_head', function(){
+    $icon = get_template_directory_uri() . '/assets/images/branding/source-more-icon-approved.png?ver=7.9.4';
+    printf('<link rel="icon" href="%s" type="image/png" sizes="512x512">', esc_url($icon));
+    printf('<link rel="shortcut icon" href="%s" type="image/png">', esc_url($icon));
+    printf('<link rel="apple-touch-icon" href="%s" sizes="512x512">', esc_url($icon));
+},100);
 
 /** Enterprise v7: create and assign editable WordPress navigation menus. */
 function smt_v7_ensure_page(string $title, string $slug): int {

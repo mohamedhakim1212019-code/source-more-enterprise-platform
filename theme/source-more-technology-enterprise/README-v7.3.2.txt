@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.3.2
+Source More Enterprise Theme v7.3.2
 ================================================
 
 Purpose

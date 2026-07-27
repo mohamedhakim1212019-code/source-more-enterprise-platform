@@ -2,7 +2,7 @@
 <section class="about-hero" aria-labelledby="about-hero-title">
   <div class="container about-hero-grid">
     <div class="about-hero-copy reveal">
-      <span class="eyebrow"><?php echo esc_html(smt_t('About Source More Technology','عن سورس مور تكنولوجي')); ?></span>
+      <span class="eyebrow"><?php echo esc_html(smt_t('About Source More','عن سورس مور')); ?></span>
       <h1 id="about-hero-title"><?php echo esc_html(smt_t(
         'Technology partnerships built around measurable business value.',
         'شراكة تقنية تحوّل التحديات إلى نتائج تدفع أعمالك للأمام.'
@@ -16,8 +16,9 @@
         <a class="btn btn-outline" href="<?php echo esc_url(smt_page_url('solutions')); ?>"><?php echo esc_html(smt_t('Explore Our Solutions','استكشف حلولنا')); ?></a>
       </div>
     </div>
-    <div class="about-hero-visual reveal">
-      <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/about-hero-placeholder.svg'); ?>" alt="<?php echo esc_attr(smt_t('Integrated business technology illustration','تصميم يعبّر عن حلول الأعمال والتكنولوجيا المتكاملة')); ?>" width="1920" height="850">
+    <div class="about-hero-visual smt-photo-panel reveal">
+      <?php smt_visual_picture('about_hero', smt_t('Source More leadership team collaborating on business technology strategy','فريق قيادة سورس مور يتعاون لوضع استراتيجية تكنولوجيا الأعمال'), ['loading'=>'eager','fetchpriority'=>'high','class'=>'smt-visual-image']); ?>
+      <div class="smt-photo-caption"><i class="fa-solid fa-handshake"></i><span><strong><?php echo esc_html(smt_t('Business-first partnership','شراكة تبدأ من أهداف الأعمال')); ?></strong><small><?php echo esc_html(smt_t('Strategy, implementation and accountable support','استراتيجية وتنفيذ ودعم مسؤول')); ?></small></span></div>
     </div>
   </div>
 </section>

@@ -1,11 +1,11 @@
-# Source More Technology — Bilingual Homepage Master Copy
+# Source More — Bilingual Homepage Master Copy
 
 ## Hero
 **EN:** One source for print, IT and digital transformation.  
 **AR:** مصدر واحد للطباعة وتكنولوجيا المعلومات والتحول الرقمي.
 
-**EN:** Source More Technology brings managed print, office technology, infrastructure, cloud, cybersecurity, and workflow automation together—helping organizations reduce cost, improve control, and move forward with confidence.  
-**AR:** تجمع Source More Technology بين الطباعة المُدارة وتقنيات المكاتب والبنية التحتية والسحابة والأمن السيبراني وأتمتة سير العمل، لمساعدة المؤسسات على خفض التكلفة وتعزيز التحكم والتقدم بثقة.
+**EN:** Source More brings managed print, office technology, infrastructure, cloud, cybersecurity, and workflow automation together—helping organizations reduce cost, improve control, and move forward with confidence.  
+**AR:** تجمع Source More بين الطباعة المُدارة وتقنيات المكاتب والبنية التحتية والسحابة والأمن السيبراني وأتمتة سير العمل، لمساعدة المؤسسات على خفض التكلفة وتعزيز التحكم والتقدم بثقة.
 
 ## Core Message
 **EN:** Enterprise Technology. One Accountable Partner.  

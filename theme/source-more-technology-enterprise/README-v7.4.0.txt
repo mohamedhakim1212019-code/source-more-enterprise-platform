@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.4.0
+Source More Enterprise Theme v7.4.0
 Website Showcase Sprint B — Bilingual About & Solutions
 
 WHAT IS INCLUDED

@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.5.1
+Source More Enterprise Theme v7.5.1
 
 Desktop mega-menu interaction hotfix:
 - Opens Solutions, Industries, and Resources by mouse hover.

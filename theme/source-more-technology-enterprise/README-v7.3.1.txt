@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.3.1
+Source More Enterprise Theme v7.3.1
 ================================================
 
 Scope

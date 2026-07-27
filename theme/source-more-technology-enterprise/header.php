@@ -12,14 +12,7 @@
 <header class="site-header" id="site-header">
  <div class="container header-inner">
   <div class="site-branding">
-   <?php if (has_custom_logo()) : ?>
-    <?php the_custom_logo(); ?>
-   <?php else : ?>
-    <a class="brand" href="<?php echo esc_url(home_url('/')); ?>" rel="home" aria-label="<?php echo esc_attr__('Source More Technology home','source-more-technology'); ?>">
-     <span class="brand-mark" aria-hidden="true">SM</span>
-     <span class="brand-copy"><strong><?php bloginfo('name'); ?></strong><small><?php echo esc_html(get_bloginfo('description') ?: 'One Source. More Value.'); ?></small></span>
-    </a>
-   <?php endif; ?>
+   <?php smt_brand_logo('header'); ?>
   </div>
   <button class="menu-toggle" type="button" aria-label="<?php echo esc_attr__('Open navigation','source-more-technology'); ?>" aria-controls="primary-navigation" aria-expanded="false">
    <span></span><span></span><span></span>

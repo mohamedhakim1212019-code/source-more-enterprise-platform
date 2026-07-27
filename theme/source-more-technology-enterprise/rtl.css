@@ -248,3 +248,17 @@ body.rtl .insights-grid{direction:rtl}
 body.rtl .support-path-card>a{grid-template-columns:44px 1fr}
 /* v7.7 bilingual Product Center */
 body.rtl .product-filters,body.smt-lang-ar .product-filters{text-align:right}body.rtl .product-card-link i,body.smt-lang-ar .product-card-link i{margin-right:6px;margin-left:0}body.rtl .quote-section-grid,body.smt-lang-ar .quote-section-grid{text-align:right}body.rtl .product-summary,body.smt-lang-ar .product-summary{text-align:right}
+
+/* v7.8.0 — RTL visual media and photo-hero alignment. */
+body.rtl .smt-photo-hero-copy,
+body.rtl .smt-photo-caption,
+body.rtl .smt-photo-badge{text-align:right}
+body.rtl .smt-photo-hero h1{letter-spacing:0;line-height:1.18}
+body.rtl .smt-photo-caption,
+body.rtl .smt-photo-badge{direction:rtl}
+body.rtl .solution-hero-icon,
+body.rtl .industry-sector-icon{right:auto;left:22px}
+body.rtl .smt-photo-caption>i,
+body.rtl .smt-photo-badge>i{order:0}
+body.rtl .contact-hero-proof{direction:rtl}
+@media(max-width:700px){body.rtl .solution-hero-icon,body.rtl .industry-sector-icon{right:auto;left:12px}body.rtl .smt-photo-hero h1{font-size:clamp(31px,8.7vw,41px);line-height:1.22}}

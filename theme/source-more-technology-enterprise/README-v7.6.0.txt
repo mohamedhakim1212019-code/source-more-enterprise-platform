@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.6.0
+Source More Enterprise Theme v7.6.0
 Bilingual Industries & Resources
 
 WHAT IS NEW

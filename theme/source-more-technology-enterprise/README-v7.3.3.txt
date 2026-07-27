@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.3.3
+Source More Enterprise Theme v7.3.3
 
 Fixes
 - Replaced the legacy homepage meta box in Gutenberg with a native editable document panel.

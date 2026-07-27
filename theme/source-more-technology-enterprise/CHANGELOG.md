@@ -1,3 +1,28 @@
+# 7.9.4 — Approved Monogram Correction
+
+- Replaced the temporary SM icon with the exact signed-off monogram shown on the approved identity board.
+- Restored the continuous white S and gold M construction without the unapproved gold border or arrow detail.
+- Applied the corrected icon consistently in the header, footer, browser favicon, shortcut icon, and Apple touch icon.
+- Added a renamed 512px preview asset and cache-busting URL so the local browser does not reuse the previous icon.
+- Preserved the v7.9.3 header spacing, bilingual wordmarks, page layouts, and all site content.
+
+# 7.9.1 — Approved Logo Preview
+
+- Added transparent English and Arabic approved wordmark assets extracted from the signed-off identity board for local review.
+- Added light-surface and dark-surface logo variants.
+- Switched the header and footer automatically between English and Arabic lockups using the active Polylang/RTL language.
+- Preserved all page layouts, navigation, content, and visual styling outside the brand lockup.
+- Marked the PNG artwork as a temporary preview pending final vector reconstruction.
+
+## 7.8.0 — Visual Images & Final Experience Polish
+- Added seven optimized, original WebP visual sets for the homepage, About, Solutions, Products, Industries, Resources, Contact, print, infrastructure, cloud, and cybersecurity experiences.
+- Replaced placeholder illustrations with professional company and service photography while preserving bilingual English/Arabic layouts.
+- Added a centralized Appearance > Visual Media manager so administrators can override bundled images through the WordPress Media Library without editing theme files.
+- Added responsive desktop/mobile picture sources, explicit dimensions, lazy loading, high-priority hero loading, and homepage image preloading.
+- Upgraded homepage, About, Solutions, solution detail, Industries, sector detail, Resources, Product Center, and Contact heroes with consistent photo panels, captions, icon badges, and gradient treatments.
+- Improved card hover feedback, focus-visible accessibility, reduced-motion support, mobile hero scaling, CTA sizing, and long-page visual rhythm.
+- Added a refreshed WordPress theme screenshot and updated asset cache versions to 7.8.0.
+
 ## 7.7.0 — Bilingual Products & Platform UI
 - Added a complete English/Arabic Product Center archive experience.
 - Localized Product filters, types, availability, empty states, pagination, and calls to action.
@@ -29,7 +54,7 @@
 - Changed mega-menu links from inactive anchors to the new real pages.
 - Extended Bilingual Pages setup to create, translate, link, and parent the two pages.
 - Removed the small eyebrow line from all internal page heroes for a cleaner visual hierarchy.
-- Ensured textual company-name references use “سورس مور تكنولوجي” on Arabic pages while preserving the English logo lockup.
+- Ensured textual company-name references use “سورس مور” on Arabic pages while preserving the English logo lockup.
 - Updated theme asset cache versions.
 
 ## 7.6.0
@@ -52,13 +77,13 @@
 - Added bilingual mega navigation for Solutions, Industries, and Resources.
 - Added responsive mobile accordion behavior through the existing accessible submenu controls.
 - Made corporate About, Solutions, and solution-detail templates visually authoritative while preserving stored editor content.
-- Updated Arabic corporate naming to سورس مور تكنولوجي in key theme experiences.
+- Updated Arabic corporate naming to سورس مور in key theme experiences.
 - Retained all v7.4.1 footer, process, RTL, and sticky-header fixes.
 
 ## 7.4.1 — Arabic Footer & Solution Process Polish
 - Fixed international phone-number direction in RTL footer layouts.
 - Kept the footer logo lockup visually consistent in English and Arabic.
-- Added the Arabic company name “سورس مور تكنولوجي” to the Arabic footer and copyright line.
+- Added the Arabic company name “سورس مور” to the Arabic footer and copyright line.
 - Improved Arabic WhatsApp greeting copy.
 - Restyled solution delivery steps as high-contrast white cards on a soft background.
 - Added dark navy headings, readable secondary text, borders, shadows, and hover feedback.
@@ -121,7 +146,7 @@
 - Added Insights page and production settings.
 - Updated all asset and installer version identifiers.
 
-# Source More Technology Theme
+# Source More Theme
 
 ## 5.0.0-beta.1 — Homepage conversion foundation
 

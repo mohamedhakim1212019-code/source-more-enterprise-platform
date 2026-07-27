@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.6.3
+Source More Enterprise Theme v7.6.3
 
 Hotfix: Arabic Contact page provisioning
 

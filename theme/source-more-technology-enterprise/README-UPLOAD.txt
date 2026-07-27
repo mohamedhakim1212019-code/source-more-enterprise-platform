@@ -1,13 +1,20 @@
-SOURCE MORE TECHNOLOGY THEME v3.0
+SOURCE MORE TECHNOLOGY ENTERPRISE THEME v7.8.0
 
-1. Back up your existing theme.
-2. Upload this complete folder to:
-   public_html/wp-content/themes/
-3. Activate it from WordPress > Appearance > Themes.
-4. Assign your menu to Primary Menu.
-5. Add:
-   assets/images/hero-business.jpg
-   assets/images/about-business.jpg
-6. Replace the WhatsApp number in template-parts/footer-content.php.
+Installation
+1. Back up the current theme.
+2. In WordPress, open Appearance > Themes > Add New Theme > Upload Theme.
+3. Upload the v7.8.0 ZIP and choose Replace current with uploaded.
+4. Confirm that the active theme version is 7.8.0.
+5. Open the site and press Ctrl+F5.
 
-This version uses only main.css and standard file names. Do not keep homepage-v2.css or any *-v2.php files inside this new theme folder.
+Visual media
+- The theme includes optimized WebP images and requires no manual image upload.
+- Open Appearance > Visual Media to preview or replace any bundled visual.
+- Image overrides apply to both English and Arabic pages.
+
+Compatibility
+- WordPress 6.4+
+- Polylang English/Arabic
+- Source More Platform v3.8.0
+
+No database migration is required.

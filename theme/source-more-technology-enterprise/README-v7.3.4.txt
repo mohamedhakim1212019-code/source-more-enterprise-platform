@@ -1,4 +1,4 @@
-Source More Technology Enterprise Theme v7.3.4
+Source More Enterprise Theme v7.3.4
 
 Fixes
 - Homepage Showcase Content fields now appear as a full-width editable meta box below the Gutenberg editor.

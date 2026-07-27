@@ -249,11 +249,10 @@ function smt_render_industry_detail(string $key): void {
     ?>
     <main class="industry-sector-page">
       <?php smt_breadcrumbs(); ?>
-      <section class="ui-page-hero industry-sector-hero"><div class="container industry-sector-hero-grid"><div>
-        <span class="eyebrow"><?php echo esc_html(smt_t('Sector-focused expertise','خبرة متخصصة للقطاعات')); ?></span>
+      <section class="ui-page-hero industry-sector-hero smt-photo-hero"><div class="container industry-sector-hero-grid"><div class="smt-photo-hero-copy">
         <h1><?php echo esc_html($d['title']); ?></h1><p><?php echo esc_html($d['tagline']); ?></p>
         <div class="hero-actions"><a class="btn btn-gold" href="<?php echo esc_url(smt_page_url('contact')); ?>"><?php echo esc_html(smt_t('Discuss Your Environment','ناقش بيئة عملك')); ?></a><a class="btn btn-outline" href="<?php echo esc_url(smt_page_url('industries')); ?>"><?php echo esc_html(smt_t('View All Industries','جميع القطاعات')); ?></a></div>
-      </div><aside class="industry-sector-symbol"><i class="fa-solid <?php echo esc_attr($d['icon']); ?>"></i><strong><?php echo esc_html(smt_t('Technology aligned with sector priorities','تكنولوجيا متوافقة مع أولويات القطاع')); ?></strong><span><?php echo esc_html(smt_t('Security • Efficiency • Continuity • Growth','الأمان • الكفاءة • الاستمرارية • النمو')); ?></span></aside></div></section>
+      </div><div class="smt-photo-panel industry-sector-photo"><?php smt_visual_picture('industries_hero', $d['title'], ['loading'=>'eager','fetchpriority'=>'high','class'=>'smt-visual-image']); ?><div class="industry-sector-icon"><i class="fa-solid <?php echo esc_attr($d['icon']); ?>"></i></div></div></div></section>
 
       <section class="section"><div class="container industry-overview-grid"><div><?php smt_section_heading(['kicker'=>smt_t('Your operating reality','طبيعة بيئة العمل'),'title'=>smt_t('A sector approach grounded in real operational priorities','منهج متخصص يبدأ من الأولويات التشغيلية الفعلية'),'text'=>$d['intro']]); ?></div><aside class="industry-priority-panel"><h2><?php echo esc_html(smt_t('Priority areas','مجالات الأولوية')); ?></h2><ul><?php foreach($d['priorities'] as $item): ?><li><i class="fa-solid fa-circle-check"></i><span><?php echo esc_html($item); ?></span></li><?php endforeach; ?></ul></aside></div></section>
 

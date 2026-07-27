@@ -8,7 +8,7 @@ Changes:
 - Improved business-benefit strip and About preview.
 - Refined six-solution preview with page-aware links.
 - Added eight-industry section.
-- Added Why Source More Technology section.
+- Added Why Source More section.
 - Clarified calculator savings figure as illustrative.
 - Added four-step delivery process.
 - Added resources/consultation section.

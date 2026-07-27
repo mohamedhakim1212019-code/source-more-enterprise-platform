@@ -12,7 +12,7 @@ function smt_homepage_content_fields(): array {
             'fields' => [
                 'hero_kicker' => ['label'=>'Eyebrow / Kicker','type'=>'text','en'=>'Enterprise Technology. One Accountable Partner.','ar'=>'مصدر واحد. حلول متكاملة. قيمة أكبر.'],
                 'hero_title' => ['label'=>'Main headline (HTML allowed: <span>)','type'=>'html','en'=>'One source for <span>print, IT and digital transformation.</span>','ar'=>'نحوّل التكنولوجيا إلى <span>نتائج تدفع أعمالك للأمام.</span>'],
-                'hero_description' => ['label'=>'Description','type'=>'textarea','en'=>'Source More Technology brings managed print, office technology, infrastructure, cloud, cybersecurity, and workflow automation together—helping organizations reduce cost, improve control, and move forward with confidence.','ar'=>'تجمع Source More بين حلول الطباعة المُدارة، وتكنولوجيا المعلومات، والبنية التحتية، والسحابة، والأمن السيبراني في منظومة واحدة تساعد مؤسستك على خفض التكاليف، ورفع الكفاءة، والعمل بثقة أكبر.'],
+                'hero_description' => ['label'=>'Description','type'=>'textarea','en'=>'Source More brings managed print, office technology, infrastructure, cloud, cybersecurity, and workflow automation together—helping organizations reduce cost, improve control, and move forward with confidence.','ar'=>'تجمع Source More بين حلول الطباعة المُدارة، وتكنولوجيا المعلومات، والبنية التحتية، والسحابة، والأمن السيبراني في منظومة واحدة تساعد مؤسستك على خفض التكاليف، ورفع الكفاءة، والعمل بثقة أكبر.'],
                 'hero_primary_label' => ['label'=>'Primary button label','type'=>'text','en'=>'Explore Our Solutions','ar'=>'اكتشف كيف نطوّر أعمالك'],
                 'hero_primary_url' => ['label'=>'Primary button URL (leave blank for Solutions page)','type'=>'url','en'=>'','ar'=>''],
                 'hero_secondary_label' => ['label'=>'Secondary button label','type'=>'text','en'=>'Request a Consultation','ar'=>'تحدث مع خبير'],
@@ -61,7 +61,7 @@ function smt_homepage_content_fields(): array {
         'why' => [
             'label' => 'Why Source More',
             'fields' => [
-                'why_kicker' => ['label'=>'Kicker','type'=>'text','en'=>'Why Source More Technology','ar'=>'لماذا Source More؟'],
+                'why_kicker' => ['label'=>'Kicker','type'=>'text','en'=>'Why Source More','ar'=>'لماذا Source More؟'],
                 'why_title' => ['label'=>'Heading','type'=>'textarea','en'=>'One accountable partner from assessment to ongoing support.','ar'=>'شريك تقني يفهم أهداف أعمالك، وليس احتياجاتك التقنية فقط.'],
                 'why_description' => ['label'=>'Description','type'=>'textarea','en'=>'We focus on practical outcomes: lower operating cost, stronger control, better user experience, reduced risk, and a technology environment that can scale with your organization.','ar'=>'نبدأ بفهم التحديات الحقيقية داخل مؤسستك، ثم نختار ونصمم وننفذ الحل الذي يحقق أفضل قيمة على المدى الطويل.'],
                 'why_cta_label' => ['label'=>'Button label','type'=>'text','en'=>'Speak With a Consultant','ar'=>'تحدث مع خبير'],
