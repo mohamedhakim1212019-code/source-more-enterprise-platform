@@ -82,7 +82,7 @@ final class SMTP_Fleet_Frontend {
 			<div class="smtp-success" id="smtp-success" hidden>
 				<i class="fa-solid fa-circle-check"></i><h3><?php echo esc_html( SMTP_I18n::text( 'Your report is ready', 'تقريرك جاهز', $lang ) ); ?></h3>
 				<p><?php echo esc_html( SMTP_I18n::text( 'A copy of the report link has also been sent to your business email when WordPress email delivery is configured.', 'تم إرسال نسخة من رابط التقرير إلى بريدك الإلكتروني عند تفعيل خدمة البريد في WordPress.', $lang ) ); ?></p>
-				<div class="smtp-success-actions"><a id="smtp-download-report" class="btn btn-gold" href="#"><?php echo esc_html( SMTP_I18n::text( 'Download PDF Report', 'تحميل تقرير PDF', $lang ) ); ?></a><a class="btn smtp-secondary" href="<?php echo esc_url( SMTP_I18n::page_url( 'contact', $lang ) ); ?>"><?php echo esc_html( SMTP_I18n::text( 'Book a Free Fleet Assessment', 'احجز تقييمًا مجانيًا لأسطول الطباعة', $lang ) ); ?></a></div>
+				<div class="smtp-success-actions"><a id="smtp-download-report" class="btn btn-gold" href="#"><?php echo esc_html( SMTP_I18n::text( 'Open Report Portal', 'فتح بوابة التقرير', $lang ) ); ?></a><a class="btn smtp-secondary" href="<?php echo esc_url( SMTP_I18n::page_url( 'contact', $lang ) ); ?>"><?php echo esc_html( SMTP_I18n::text( 'Book a Free Fleet Assessment', 'احجز تقييمًا مجانيًا لأسطول الطباعة', $lang ) ); ?></a></div>
 			</div>
 		</section>
 		<?php

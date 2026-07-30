@@ -23,9 +23,9 @@ add_action('after_setup_theme', function(){
 add_action('wp_enqueue_scripts', function(){
   wp_enqueue_style('smt-fonts','https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap',[],null);
   wp_enqueue_style('smt-icons','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css',[],'6.7.2');
-  wp_enqueue_style('smt-main',get_template_directory_uri().'/assets/css/main.css',[],'7.9.4');
-  if (is_rtl() || (function_exists('smt_is_ar') && smt_is_ar())) wp_enqueue_style('smt-rtl',get_template_directory_uri().'/rtl.css',['smt-main'],'7.9.4');
-  wp_enqueue_script('smt-main',get_template_directory_uri().'/assets/js/main.js',[],'7.9.4',true);
+  wp_enqueue_style('smt-main',get_template_directory_uri().'/assets/css/main.css',[],'7.9.6');
+  if (is_rtl() || (function_exists('smt_is_ar') && smt_is_ar())) wp_enqueue_style('smt-rtl',get_template_directory_uri().'/rtl.css',['smt-main'],'7.9.6');
+  wp_enqueue_script('smt-main',get_template_directory_uri().'/assets/js/main.js',[],'7.9.6',true);
 });
 add_filter('body_class',function($classes){ $classes[]='smt-lang-'.sanitize_html_class(smt_lang()); return $classes; });
 
@@ -73,7 +73,7 @@ add_action('wp_head', function(){
 
 /** Use the signed-off SM monogram for the browser tab and saved shortcuts. */
 add_action('wp_head', function(){
-    $icon = get_template_directory_uri() . '/assets/images/branding/source-more-icon-approved.png?ver=7.9.4';
+    $icon = get_template_directory_uri() . '/assets/images/branding/source-more-icon.svg?ver=7.9.6';
     printf('<link rel="icon" href="%s" type="image/png" sizes="512x512">', esc_url($icon));
     printf('<link rel="shortcut icon" href="%s" type="image/png">', esc_url($icon));
     printf('<link rel="apple-touch-icon" href="%s" sizes="512x512">', esc_url($icon));

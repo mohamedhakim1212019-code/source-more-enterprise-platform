@@ -21,6 +21,10 @@ final class SMTP_Loader {
 		}
 
 		$files = array(
+			'includes/core/class-smtp-container.php',
+			'includes/core/class-smtp-capabilities.php',
+			'includes/core/class-smtp-audit-log.php',
+			'includes/core/class-smtp-core.php',
 			'includes/core/class-smtp-i18n.php',
 			'includes/class-smtp-modules.php',
 			'includes/class-smtp-logger.php',

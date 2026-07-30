@@ -58,6 +58,14 @@ final class SMTP_Bootstrap {
 			return;
 		}
 
+		if ( class_exists( 'SMTP_Capabilities' ) ) {
+			SMTP_Capabilities::install();
+		}
+
+		if ( class_exists( 'SMTP_Audit_Log' ) ) {
+			SMTP_Audit_Log::install();
+		}
+
 		if ( class_exists( 'SMTP_Products_Module' ) ) {
 			SMTP_Products_Module::register_content_types();
 		}

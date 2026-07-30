@@ -1,5 +1,31 @@
 # Changelog
 
+## 3.9.0
+- Introduced secure branded report portal URLs at `/report/{lead}/{token}/`.
+- Upgraded the fleet report to a three-page enterprise assessment.
+- Added executive KPI cards, analytics dashboard, cost comparison, and five-year projection.
+- Added optimization opportunity matrix and current-environment analysis.
+- Added indicative environmental impact metrics with clear planning disclaimers.
+- Added engagement roadmap, consultation CTAs, WhatsApp action, and print/PDF mode.
+- Retained legacy report links for backward compatibility.
+
+## 3.8.2
+- Refined the Fleet Savings report header for a more compact executive layout.
+- Uses the complete Source More website logo lockup when the enterprise theme is active.
+- Added a branded footer with phone, email, address, website, and report number.
+- Footer contact details are loaded automatically from Source More theme settings.
+- Reduced print spacing to prevent an unnecessary footer-only final page.
+
+# Changelog
+
+## 3.8.1
+- Replaced the legacy ASCII-only Fleet PDF renderer with a print-optimized bilingual HTML report.
+- Added full Arabic report translation and native RTL layout while preserving English LTR output.
+- Added the active website custom logo, Navy/Gold Source More branding, executive KPI cards, cost comparison, environment details, and recommendations.
+- Added report number, issue date, responsive presentation, and A4 print styling for browser Save as PDF.
+- Localized invalid or expired report-link messages.
+- Preserved existing secure report URLs, lead metadata, REST endpoints, and database version 3.1.0.
+
 ## 3.8.0
 
 - Added a shared English/Arabic public-experience layer with Polylang-aware language and URL resolution.

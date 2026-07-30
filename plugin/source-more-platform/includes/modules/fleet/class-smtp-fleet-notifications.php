@@ -28,7 +28,7 @@ final class SMTP_Fleet_Notifications {
 			$customer_body    = "الأستاذ/ة {$data['contact_name']}،\n\nشكرًا لاستخدام حاسبة وفر الطباعة من سورس مور تكنولوجي.\n\nالتوفير السنوي التقديري: " . number_format( (float) $data['annual_savings'], 0 ) . " جنيه مصري.\n\nتحميل التقرير: {$report_url}\n\nهذه نتيجة تقديرية ويجب التحقق منها من خلال تقييم احترافي لأسطول الطباعة.\n\nسورس مور تكنولوجي\nمصدر واحد. قيمة أكبر.";
 		} else {
 			$customer_subject = 'Your Fleet Savings Report — Source More Technology';
-			$customer_body    = "Dear {$data['contact_name']},\n\nThank you for using the Source More Technology Fleet Savings Calculator.\n\nYour estimated annual savings are EGP " . number_format( (float) $data['annual_savings'], 0 ) . ".\n\nDownload your report: {$report_url}\n\nThis indicative estimate should be validated through a professional fleet assessment.\n\nSource More Technology\nOne Source, More Value.";
+			$customer_body    = "Dear {$data['contact_name']},\n\nThank you for using the Source More Technology Fleet Savings Calculator.\n\nYour estimated annual savings are EGP " . number_format( (float) $data['annual_savings'], 0 ) . ".\n\nOpen your secure report portal: {$report_url}\n\nThis indicative estimate should be validated through a professional fleet assessment.\n\nSource More Technology\nOne Source, More Value.";
 		}
 
 		$customer_headers = is_email( $to ) ? array( 'Reply-To: Source More Technology <' . $to . '>' ) : array();

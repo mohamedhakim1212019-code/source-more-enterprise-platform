@@ -13,6 +13,8 @@ final class SMTP_Platform {
 	private static bool $modules_registered = false;
 
 	public static function activate(): void {
+		SMTP_Capabilities::install();
+		SMTP_Audit_Log::install();
 		SMTP_Leads::register_post_type();
 		SMTP_Products_Module::register_content_types();
 		SMTP_Assistant_Module::register_content_types();
@@ -22,6 +24,7 @@ final class SMTP_Platform {
 			add_option( 'smtp_platform_options', SMTP_Settings::defaults(), '', false );
 		}
 
+		SMTP_Audit_Log::record( 'platform_activated', 'platform', 0, array( 'version' => SMTP_PLATFORM_VERSION ) );
 		flush_rewrite_rules();
 	}
 
@@ -51,11 +54,23 @@ final class SMTP_Platform {
 
 		SMTP_Module_Registry::register(
 			new SMTP_Module(
+				'core',
+				'SMEP Core Framework',
+				SMTP_PLATFORM_VERSION,
+				array( 'SMTP_Core', 'boot' ),
+				array(),
+				null,
+				array( 'SMTP_Core', 'SMTP_Container', 'SMTP_Capabilities', 'SMTP_Audit_Log' )
+			)
+		);
+
+		SMTP_Module_Registry::register(
+			new SMTP_Module(
 				'settings',
 				'Platform Settings',
 				SMTP_PLATFORM_VERSION,
 				array( 'SMTP_Settings', 'init' ),
-				array(),
+				array( 'core' ),
 				null,
 				array( 'SMTP_Settings', 'SMTP_Modules' )
 			)

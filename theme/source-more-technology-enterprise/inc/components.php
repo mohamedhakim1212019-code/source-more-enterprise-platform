@@ -78,7 +78,7 @@ function smt_brand_logo(string $context = 'header'): void {
     $surface_class = $is_dark ? 'smt-brand--dark' : 'smt-brand--light';
     $lang = (function_exists('smt_is_ar') && smt_is_ar()) ? 'ar' : 'en';
     $home = function_exists('smt_home_url') ? smt_home_url() : home_url('/');
-    $icon = get_template_directory_uri() . '/assets/images/branding/source-more-icon-approved.png?ver=7.9.4';
+    $icon = get_template_directory_uri() . '/assets/images/branding/source-more-icon.svg?ver=7.9.6';
     $alt = $lang === 'ar' ? 'سورس مور — مصدر واحد. قيمة أكثر.' : 'Source More — One Source. More Value.';
     $loading = $context === 'header' ? 'eager' : 'lazy';
     $fetchpriority = $context === 'header' ? 'high' : 'auto';
